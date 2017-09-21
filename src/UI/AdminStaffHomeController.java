@@ -5,6 +5,7 @@
  */
 package UI;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +17,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -24,20 +27,16 @@ import javafx.stage.Stage;
  *
  * @author simonnewham
  */
-public class Lecturer_viewController implements Initializable {
+public class AdminStaffHomeController implements Initializable {
 
-     @FXML
+   @FXML
    private Button signout;
-    
-   @FXML
-   private Button Viewmarks;
-     
-   @FXML
-   private Button Viewstudents;
-      
+       
    @FXML
    private StackPane content;
-      
+    
+   @FXML
+   private ImageView logo;
    
    @FXML
    public void handleSignOut(ActionEvent event) throws IOException{
@@ -48,26 +47,16 @@ public class Lecturer_viewController implements Initializable {
        app_stage.setScene(home_scene);
        app_stage.show();  
    }
-   
-   @FXML
-   public void handleViewMarks(ActionEvent event) throws IOException{
-       
-        content.getChildren().clear();
-        content.getChildren().add(FXMLLoader.load(getClass().getResource("Lecturer_view2.fxml")));
-
-   }
-   
-   @FXML
-   public void handleViewStundents(ActionEvent event) throws IOException{
-       
-       
-   }
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+          //load logo
+        File file = new File("logo.gif");
+        Image image = new Image(file.toURI().toString());
+        logo.setImage(image);
     }    
     
 }

@@ -60,19 +60,36 @@ public class LoginController implements Initializable {
             System.out.println(users.get(i).getUser());
             System.out.println(users.get(i).getPass());
        }*/
-      
+      if(u.equals("Admin")){
+                Parent home_parent = FXMLLoader.load(getClass().getResource("AdminHome.fxml"));
+                Scene home_scene = new Scene(home_parent);
+                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //current stage
+                            //app_stage.hide();
+                app_stage.setScene(home_scene);
+                app_stage.show();   
+            }
+      else if(u.equals("AdminStaff")){
+                Parent home_parent = FXMLLoader.load(getClass().getResource("AdminStaffHome.fxml"));
+                Scene home_scene = new Scene(home_parent);
+                 Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //current stage
+                 //app_stage.hide();
+                app_stage.setScene(home_scene);
+                app_stage.show();   
+            }
        
        //Check Credentials
        for (User temp : users) {
            
-            if (u.equals(temp.getUser()) && p.equals(temp.getPass())){
+            
+            
+           if (u.equals(temp.getUser()) && p.equals(temp.getPass())){
                 
                System.out.println("Welcome "+temp.getUser());
                
                         //if convenor
                         if(temp.getRole().equals("CC")){
                             
-                           Parent home_parent = FXMLLoader.load(getClass().getResource("convenorHome_1.fxml"));
+                           Parent home_parent = FXMLLoader.load(getClass().getResource("convenorHome.fxml"));
                            Scene home_scene = new Scene(home_parent);
                            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //current stage
                        
@@ -100,6 +117,7 @@ public class LoginController implements Initializable {
                             app_stage.setScene(home_scene);
                             app_stage.show();    
                         }
+                        
             
             }
             else{

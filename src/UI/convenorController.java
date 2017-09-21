@@ -5,6 +5,7 @@
  */
 package UI;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,6 +16,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -22,8 +27,20 @@ import javafx.stage.Stage;
  *
  * @author simonnewham
  */
-public class HomeController implements Initializable {
+public class convenorController implements Initializable {
 
+    
+    @FXML
+   private StackPane content;
+    @FXML
+   private Button course;
+     @FXML
+   private Button signout;
+     
+     @FXML
+   private ImageView logo;
+     
+     
      @FXML
    public void handleEdit(ActionEvent event) throws IOException{
        
@@ -33,8 +50,9 @@ public class HomeController implements Initializable {
         
         app_stage.setScene(home_scene);
         app_stage.show();
-   }
         
+   }
+     @FXML   
      public void handleSignOut(ActionEvent event) throws IOException{
         
          Parent home_parent = FXMLLoader.load(getClass().getResource("Login.fxml"));
@@ -44,12 +62,23 @@ public class HomeController implements Initializable {
          app_stage.show();
     
     }
+     
+    @FXML   
+     public void handleCourse(ActionEvent event) throws IOException{
+        
+         
+    
+    } 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        //load logo
+        File file = new File("logo.gif");
+        Image image = new Image(file.toURI().toString());
+        logo.setImage(image);
     }    
     
 }
