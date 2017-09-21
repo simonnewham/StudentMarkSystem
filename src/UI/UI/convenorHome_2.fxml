@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.convenorHome_2Controller">
+   <children>
+      <SplitPane dividerPositions="0.2826086956521739">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" opacity="0.74" prefHeight="375.0" prefWidth="149.0" style="-fx-background-color: green; -fx-border-color: black;">
+               <children>
+                  <Button layoutX="15.0" layoutY="229.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="140.0" text="CSC3003S">
+                     <font>
+                        <Font name="Sakkal Majalla" size="18.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Button>
+                  <Button layoutX="15.0" layoutY="177.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="140.0" text="CSC3003S">
+                     <font>
+                        <Font name="Sakkal Majalla" size="18.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Button>
+                  <Button layoutX="15.0" layoutY="127.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="140.0" text="CSC3003S">
+                     <font>
+                        <Font name="Sakkal Majalla" size="18.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Button>
+                  <Label layoutX="8.0" layoutY="14.0" text="Aslam" textFill="WHITE">
+                     <font>
+                        <Font name="Sakkal Majalla" size="27.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="316.0" style="-fx-border-color: black;">
+               <children>
+                  <ImageView fx:id="image" fitHeight="375.0" fitWidth="522.0" layoutX="-44.0" opacity="0.73" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../back_g.JPG" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="118.0" layoutY="24.0" prefHeight="38.0" prefWidth="176.0" text="CSS3002S" underline="true">
+                     <font>
+                        <Font name="Sakkal Majalla" size="29.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="importButton" layoutX="219.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleImportMarks" text="Import Marks">
+                     <font>
+                        <Font name="Sakkal Majalla" size="13.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect></Button>
+                  <Label layoutX="140.0" layoutY="62.0" text="IMPORT/ADD MARKS" />
+                  <TextField fx:id="fileName" layoutX="52.0" layoutY="131.0" prefHeight="31.0" prefWidth="154.0" promptText="filename" />
+                  <TextField fx:id="studentNumber" layoutX="52.0" layoutY="215.0" prefHeight="31.0" prefWidth="154.0" promptText="student number" />
+                  <TextField fx:id="testName" layoutX="52.0" layoutY="254.0" prefHeight="31.0" prefWidth="154.0" promptText="test" />
+                  <TextField fx:id="testMark" layoutX="52.0" layoutY="296.0" prefHeight="31.0" prefWidth="154.0" promptText="mark" />
+                  <Button fx:id="editButton" layoutX="219.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleEditMark" text="Add Mark">
+                     <font>
+                        <Font name="Sakkal Majalla" size="13.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Button>
+                  <Button fx:id="back" layoutX="14.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleBack" text="&lt;" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="165.0" text="UCT COMPUTER SCIENCE" textFill="#0a0a0a">
+         <font>
+            <Font name="Sakkal Majalla Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</VBox>
