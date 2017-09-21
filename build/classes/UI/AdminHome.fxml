@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="383.0" prefWidth="694.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Student_viewController">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="383.0" prefWidth="694.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AdminHomeController">
   <columnConstraints>
     <ColumnConstraints hgrow="ALWAYS" maxWidth="150.0" minWidth="10.0" prefWidth="133.0" />
     <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="561.0" />
@@ -30,35 +30,41 @@
          </children></StackPane>
       <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="150.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #C5C8CA;" GridPane.rowIndex="1">
          <children>
-            <Button fx:id="viewMarks" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: white;" text="View Marks" textAlignment="CENTER">
+            <Button fx:id="addUser" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addUser" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: white;" text="Add User" textAlignment="CENTER">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="viewDetails" alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="103.0" style="-fx-background-color: white;" text="View Details">
+            <Button fx:id="deleteUser" alignment="CENTER" mnemonicParsing="false" onAction="#deleteUser" prefHeight="27.0" prefWidth="103.0" style="-fx-background-color: white;" text="Remove User">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" style="-fx-background-color: white;" text="View Courses">
+            <Button fx:id="SearchUser" alignment="CENTER" mnemonicParsing="false" onAction="#searchUser" style="-fx-background-color: white;" text="View All Users">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
          </children>
       </VBox>
-      <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #3E90AD;">
+      <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #2A2927;">
          <children>
-            <Label text="Student" textAlignment="JUSTIFY" textFill="#fffefe" StackPane.alignment="CENTER">
+            <Label text="Admin" textAlignment="JUSTIFY" textFill="#fffefe" StackPane.alignment="CENTER">
                <font>
                   <Font name="System Font" size="18.0" />
                </font>
             </Label>
          </children>
       </StackPane>
-      <StackPane alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #3E90AD;" GridPane.columnIndex="1">
+      <StackPane alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #2A2927;" GridPane.columnIndex="1">
          <children>
-            <Button fx:id="signout" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleSignOut" style="-fx-background-color: #3986A1;" text="Sign Out" textFill="WHITE" />
+            <Button fx:id="signout" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#signOut" style="-fx-background-color: #3986A1;" text="Sign Out" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <StackPane.margin>
+                  <Insets right="10.0" />
+               </StackPane.margin></Button>
          </children>
       </StackPane>
    </children>
