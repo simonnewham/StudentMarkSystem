@@ -33,7 +33,7 @@ public class AdminHomeController implements Initializable {
     @FXML
    private Button deleteUser;
     @FXML
-   private Button SearchUser;
+   private Button allUser;
      @FXML
    private Button signout;
      
@@ -54,8 +54,11 @@ public class AdminHomeController implements Initializable {
    }
    
    @FXML
-   public void searchUser(ActionEvent event) throws IOException{
+   public void allUser(ActionEvent event) throws IOException{
        
+       //neeed to move allUsers.fxml into UI package
+       //content.getChildren().clear();
+       //content.getChildren().add(FXMLLoader.load(getClass().getResource("Admin.allUsers.fxml")));
        
 
    }

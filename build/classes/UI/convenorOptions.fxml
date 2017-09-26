@@ -27,22 +27,22 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="154.0" text="Button">
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="154.0" text="Edit Course">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="156.0" text="Button">
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="156.0" text="View Students">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" text="Button">
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" text="View Marks">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="168.0" text="Button">
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="168.0" text="Course Details">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>

@@ -48,12 +48,12 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="118.0" style="-fx-background-color: white;" text="View Course">
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="118.0" style="-fx-background-color: white;" text="View Courses">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" style="-fx-background-color: white;" text="Search Students">
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" style="-fx-background-color: white;" text="View Students">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
@@ -71,7 +71,10 @@
       </StackPane>
       <StackPane alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #3E90AD;" GridPane.columnIndex="1">
          <children>
-            <Button fx:id="signout" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleSignOut" style="-fx-background-color: #3986A1;" text="Sign Out" textFill="WHITE" />
+            <Button fx:id="signout" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleSignOut" style="-fx-background-color: #3986A1;" text="Sign Out" textFill="WHITE">
+               <StackPane.margin>
+                  <Insets right="10.0" />
+               </StackPane.margin></Button>
          </children>
       </StackPane>
    </children>

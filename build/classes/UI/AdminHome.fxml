@@ -40,7 +40,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="SearchUser" alignment="CENTER" mnemonicParsing="false" onAction="#searchUser" style="-fx-background-color: white;" text="View All Users">
+            <Button fx:id="allUser" alignment="CENTER" mnemonicParsing="false" onAction="#allUser" style="-fx-background-color: white;" text="View All Users">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
