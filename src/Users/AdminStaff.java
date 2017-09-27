@@ -16,9 +16,9 @@ public class AdminStaff extends User{
     
     private ArrayList<Course> all_courses;
     
-     public AdminStaff(String u,String p, String r){
+     public AdminStaff(String u,String f, String l,  String e, String p, String r){
         
-        super(u,p,r);
+        super(u, f, l, e, p, r);
        
     }
      

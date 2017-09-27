@@ -54,7 +54,7 @@
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <children>
-                  <Button fx:id="editButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="83.0" text="Edit " />
+                  <Button fx:id="editButton" mnemonicParsing="false" onAction="#handleEditMark" prefHeight="27.0" prefWidth="83.0" text="Edit " />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
@@ -70,7 +70,7 @@
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <PasswordField fx:id="studentNumber" />
+                  <PasswordField fx:id="studentNumber" accessibleRole="TEXT_FIELD" />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">

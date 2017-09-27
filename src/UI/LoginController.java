@@ -23,8 +23,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import DB.*;
 import Users.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 /**
@@ -45,49 +49,26 @@ public class LoginController implements Initializable {
    private ImageView logo;
    
    @FXML
-   public void handleLogin(ActionEvent event) throws IOException{
+   public void handleLogin(ActionEvent event) throws IOException, SQLException{
        
        //check credentials
        String u = username.getText();
        String p = passwordField.getText();
        
-       //access DB
-       //DataBase DB = new DataBase();
-       ArrayList<User> users = DataBase.getUsers();
        
-       //TRACE
-       /*for(int i=0; i<users.size(); i++){
-            System.out.println(users.get(i).getUser());
-            System.out.println(users.get(i).getPass());
-       }*/
-      if(u.equals("Admin")){
-                Parent home_parent = FXMLLoader.load(getClass().getResource("AdminHome.fxml"));
-                Scene home_scene = new Scene(home_parent);
-                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //current stage
-                            //app_stage.hide();
-                app_stage.setScene(home_scene);
-                app_stage.show();   
-            }
-      else if(u.equals("AdminStaff")){
-                Parent home_parent = FXMLLoader.load(getClass().getResource("AdminStaffHome.fxml"));
-                Scene home_scene = new Scene(home_parent);
-                 Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //current stage
-                 //app_stage.hide();
-                app_stage.setScene(home_scene);
-                app_stage.show();   
-            }
+      
        
-       //Check Credentials
-       for (User temp : users) {
-           
-            
-            
-           if (u.equals(temp.getUser()) && p.equals(temp.getPass())){
+       Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
+       Statement myStatement = myConn.createStatement();
+       ResultSet myRltSet = myStatement.executeQuery("select * from users_login");
+       
+       while (myRltSet.next()){
+          if (u.equals(myRltSet.getString("user_id")) && p.equals(myRltSet.getString("password"))){
                 
-               System.out.println("Welcome "+temp.getUser());
+               System.out.println("Welcome "+ myRltSet.getString("first_name") + " " + myRltSet.getString("surname"));
                
                         //if convenor
-                        if(temp.getRole().equals("CC")){
+                        if(myRltSet.getString("role").equals("CC")){
                             
                            Parent home_parent = FXMLLoader.load(getClass().getResource("convenorHome.fxml"));
                            Scene home_scene = new Scene(home_parent);
@@ -99,7 +80,7 @@ public class LoginController implements Initializable {
                            app_stage.show();
                         }
                         //if student
-                        else if(temp.getRole().equals("S")){
+                        else if(myRltSet.getString("role").equals("S")){
                             
                             Parent home_parent = FXMLLoader.load(getClass().getResource("Student_view.fxml"));
                             Scene home_scene = new Scene(home_parent);
@@ -108,7 +89,7 @@ public class LoginController implements Initializable {
                             app_stage.setScene(home_scene);
                             app_stage.show();    
                         }
-                        else if(temp.getRole().equals("L")){
+                        else if(myRltSet.getString("role").equals("L")){
                             
                             Parent home_parent = FXMLLoader.load(getClass().getResource("Lecturer_view.fxml"));
                             Scene home_scene = new Scene(home_parent);
@@ -117,14 +98,30 @@ public class LoginController implements Initializable {
                             app_stage.setScene(home_scene);
                             app_stage.show();    
                         }
-                        
+                        else if(myRltSet.getString("role").equals("A")){
+                            Parent home_parent = FXMLLoader.load(getClass().getResource("AdminHome.fxml"));
+                            Scene home_scene = new Scene(home_parent);
+                            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //current stage
+                                        //app_stage.hide();
+                            app_stage.setScene(home_scene);
+                            app_stage.show();   
+                        }
+                        else if(myRltSet.getString("role").equals("AS")){
+                            Parent home_parent = FXMLLoader.load(getClass().getResource("AdminStaffHome.fxml"));
+                            Scene home_scene = new Scene(home_parent);
+                             Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //current stage
+                             //app_stage.hide();
+                            app_stage.setScene(home_scene);
+                            app_stage.show();   
+                        }
             
             }
             else{
                 error.setText("Error with Login");
             
-            }
-	}
+            }  
+       } 
+       myConn.close();
    }
     
     @Override

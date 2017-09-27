@@ -5,12 +5,16 @@
  */
 package Users;
 
-import DB.DataBase;
 import Users.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 /**
  *
@@ -19,41 +23,41 @@ import java.util.ArrayList;
 public class Convenor extends User{
     
     
-    public Convenor(String u,String p, String r){
+    public Convenor(String u,String f, String l,  String e, String p, String r){
         
-        super(u,p,r);
+        super(u, f, l, e, p, r);
        
     }
     
-    public static void importMarks(String fileName) throws FileNotFoundException, IOException{
+    public static void importMarks(String fileName) throws FileNotFoundException, IOException, SQLException{
+        
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         String currentLine;
+        
+        Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
+        Statement myStatement = myConn.createStatement();
+        String testName = br.readLine();
+        String insertColumn =   "ALTER TABLE users.marks ADD "+ testName +" INT";
+                    
+        myStatement.executeUpdate(insertColumn);        
         while ((currentLine = br.readLine()) != null){
             String[] lineParts = currentLine.split(" ");
             String studentName = lineParts[0];
-            String testMark = lineParts[1];
-            String testName = lineParts[2];
+            String testMarkString = lineParts[1];
+            int testMark = Integer.parseInt(testMarkString);
             
-        ArrayList<User> users = DB.DataBase.getUsers();
-        for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getUser().equals(studentName)){
-                Student currentStudent = (Student) users.get(i);
-                currentStudent.addMark(testName,Integer.parseInt(testMark));
-            }
-        }           
+            String insertMark = "UPDATE users.marks SET " + testName + "='" + testMarkString + "' WHERE studentname='" + studentName + "' and coursename ='CSC3003S'";
+            myStatement.executeUpdate(insertMark);    
         }
         
     }
     
-    public static void editMarks(String studentName, String markInfo, int newMark){
-        ArrayList<User> users = DB.DataBase.getUsers();
-        for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getUser().equals(studentName)){
-                Student currentStudent = (Student) users.get(i);
-                currentStudent.editMark(markInfo,newMark);
-            }
-        }
+    public static void editMarks(String studentName, String markInfo, String newMark) throws SQLException{
+        Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
+        Statement myStatement = myConn.createStatement();
         
+        String editMark = "UPDATE users.marks SET " + markInfo + "='" + newMark + "' WHERE studentname='" + studentName + "' and coursename ='CSC3003S'";
+        myStatement.executeUpdate(editMark);
     }
     
 }

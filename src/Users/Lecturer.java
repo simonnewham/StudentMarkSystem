@@ -15,10 +15,10 @@ public class Lecturer extends User{
     //access rights
     //view marks
     
-    public Lecturer(String u,String p, String r, String c){
+    public Lecturer(String u,String f, String l,  String e, String p, String r){
         
-        super(u,p,r);
-        course = c;
+        super(u, f, l, e, p, r);
+       
         
     }
     

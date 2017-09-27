@@ -19,9 +19,9 @@ public class Student extends User {
     private ArrayList<String> courses = new ArrayList<String>();
     private ArrayList marks = new ArrayList();
     
-    public Student(String u,String p, String r){
+    public Student(String u,String f, String l,  String e, String p, String r){
         
-        super(u,p,r);
+        super(u, f, l, e, p, r);
        
     }
     
@@ -35,7 +35,7 @@ public class Student extends User {
         markSet.add(markInfo);
         markSet.add(mark);
         marks.add(markSet);
-        System.out.println(this.getUser());
+        System.out.println(this.getUsername());
         System.out.println(marks);
     }
     

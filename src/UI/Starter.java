@@ -10,9 +10,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import DB.*;
 import UI.*;
-import student.FillDB;
+
 /**
  *
  * @author simonnewham
@@ -23,13 +22,11 @@ public class Starter extends Application {
     public void start(Stage stage) throws Exception {
         
         //DataBase.init_UserDB();
-        DataBase DB = new DataBase();
-        FillDB.init_UserDB(DB);
-        
+       
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));        
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle("Login");
+        //stage.setTitle("Login");
         stage.show();
     }
 

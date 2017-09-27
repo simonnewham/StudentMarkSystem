@@ -5,8 +5,10 @@
  */
 package UI;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -103,14 +105,17 @@ public class convenorController implements Initializable {
          
     //HANDLE MARKS
    @FXML
-    public void handleImportMarks() throws IOException{
+    public void handleImportMarks() throws IOException, FileNotFoundException, SQLException{
         Users.Convenor.importMarks(fileName.getText());
         fileName.clear();
                
     }
     @FXML
-    public void handleEditMark(){
-        Users.Convenor.editMarks(studentNumber.getText(), testName.getText(), Integer.parseInt(testMark.getText()));
+    public void handleEditMark() throws SQLException{
+        Users.Convenor.editMarks(studentNumber.getText(), testName.getText(), testMark.getText());
+        studentNumber.clear();
+        testName.clear();
+        testMark.clear();
     }
     
     @FXML
