@@ -60,20 +60,12 @@ public class convenorController implements Initializable {
     @FXML
    private Button back;
     
-    @FXML
-   private Button editMarks;
-      
-    @FXML
-   private TextField fileName;
-    
-   @FXML
-   private TextField studentNumber;
-       
-   @FXML
-   private TextField testName;
-        
-   @FXML
-   private TextField testMark;
+   @FXML private Button editMarks;    
+   @FXML private TextField fileName;
+   @FXML private TextField studentNumber;
+   @FXML private TextField testName;   
+   @FXML private TextField testMark;
+   
         
      //HOME
      @FXML   
@@ -91,17 +83,16 @@ public class convenorController implements Initializable {
         
         content.getChildren().clear();
         content.getChildren().add(FXMLLoader.load(getClass().getResource("convenorOptions.fxml")));
-        
-                
+         
      }  
     //OPTIONS
     @FXML
-   public void handleEdit(ActionEvent event) throws IOException{
+    public void handleEdit(ActionEvent event) throws IOException{
        
         OptionsContent.getChildren().clear();
         OptionsContent.getChildren().add(FXMLLoader.load(getClass().getResource("convenor_EditMarks.fxml")));
         
-   }
+    }
          
     //HANDLE MARKS
    @FXML

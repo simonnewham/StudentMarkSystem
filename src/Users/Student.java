@@ -12,17 +12,21 @@ import java.util.ArrayList;
  *
  * @author simonnewham
  */
-public class Student extends User {
+public class Student extends Person {
     
-    private String stuNum;
+    private String course;
     private ArrayList<Course> courses_registered;
     private ArrayList<String> courses = new ArrayList<String>();
     private ArrayList marks = new ArrayList();
     
-    public Student(String u,String f, String l,  String e, String p, String r){
+    public Student(String u,String f, String l,  String e, String c){
         
-        super(u, f, l, e, p, r);
-       
+        super(u, f, l, e);
+        course =c;
+    }
+
+    public String getCourse() {
+        return course;
     }
     
     public ArrayList<Course> getCourses(){

@@ -27,7 +27,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="118.0" style="-fx-background-color: white;" text="View Marks">
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="118.0" style="-fx-background-color: white;" text="View Courses">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>

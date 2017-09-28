@@ -30,12 +30,10 @@ public class AdminHomeController implements Initializable {
    private StackPane content;
     @FXML
    private Button addUser;
-    @FXML
-   private Button deleteUser;
-    @FXML
-   private Button viewUsers;
-     @FXML
-   private Button signout;
+    @FXML private Button deleteUser;
+    @FXML private Button viewUsers;
+    @FXML private Button signout;
+   
      
     @FXML
    public void addUser(ActionEvent event) throws IOException{

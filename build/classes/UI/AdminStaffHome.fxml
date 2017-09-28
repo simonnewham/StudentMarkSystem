@@ -48,12 +48,12 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="118.0" style="-fx-background-color: white;" text="View Course">
+            <Button fx:id="viewCourses" alignment="CENTER" mnemonicParsing="false" onAction="#hanldeviewCourses" prefHeight="27.0" prefWidth="118.0" style="-fx-background-color: white;" text="View Courses">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" style="-fx-background-color: white;" text="Search Students">
+            <Button fx:id="viewStudents" alignment="CENTER" mnemonicParsing="false" onAction="#hanldeviewStudents" prefHeight="27.0" prefWidth="123.0" style="-fx-background-color: white;" text="View Students">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>

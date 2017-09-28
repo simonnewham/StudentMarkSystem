@@ -11,4 +11,25 @@ package Courses;
  */
 public class Course {
     
+    String code;
+    String year;
+    String convenor;
+    
+    public Course(String c, String y, String cc){
+        code=c;
+        year=y;
+        convenor=cc;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public String getConvenor() {
+        return convenor;
+    }
 }

@@ -29,14 +29,11 @@ import javafx.stage.Stage;
  */
 public class AdminStaffHomeController implements Initializable {
 
-   @FXML
-   private Button signout;
-       
-   @FXML
-   private StackPane content;
-    
-   @FXML
-   private ImageView logo;
+   @FXML private Button signout;    
+   @FXML private StackPane content;
+   @FXML private ImageView logo;
+   @FXML Button viewStudents;
+   @FXML Button viewCourses;
    
    @FXML
    public void handleSignOut(ActionEvent event) throws IOException{
@@ -46,6 +43,22 @@ public class AdminStaffHomeController implements Initializable {
        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //current stage
        app_stage.setScene(home_scene);
        app_stage.show();  
+   }
+   
+   @FXML
+   public void hanldeviewCourses()throws IOException{
+       
+       content.getChildren().clear();
+       content.getChildren().add(FXMLLoader.load(getClass().getResource("viewCourses.fxml")));
+       
+   }
+   
+   @FXML
+   public void hanldeviewStudents()throws IOException{
+       
+       content.getChildren().clear();
+       content.getChildren().add(FXMLLoader.load(getClass().getResource("viewStudents.fxml")));
+       
    }
     /**
      * Initializes the controller class.

@@ -39,17 +39,17 @@
          </children></StackPane>
       <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="150.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #C5C8CA;" GridPane.rowIndex="1">
          <children>
-            <Button fx:id="Viewmarks" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleViewMarks" prefHeight="27.0" prefWidth="106.0" style="-fx-background-color: white;" text="View Marks" textAlignment="CENTER">
+            <Button fx:id="currentCourse" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleCurrentCourse" prefHeight="27.0" prefWidth="119.0" style="-fx-background-color: white;" text="Current Course" textAlignment="CENTER">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="Viewstudents" alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: white;" text="View Students">
+            <Button fx:id="Viewstudents" alignment="CENTER" mnemonicParsing="false" onAction="#handleViewStudents" prefHeight="27.0" prefWidth="122.0" style="-fx-background-color: white;" text="View Students">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="search" alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: white;" text="Search ">
+            <Button fx:id="search" alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="125.0" style="-fx-background-color: white;" text="Search ">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>

@@ -26,17 +26,18 @@ import javafx.stage.Stage;
  */
 public class Lecturer_viewController implements Initializable {
 
-     @FXML
-   private Button signout;
+     @FXML private Button signout;
+   
     
-   @FXML
-   private Button Viewmarks;
+   @FXML private Button Viewmarks;
+  
      
-   @FXML
-   private Button Viewstudents;
+   @FXML private Button Viewstudents;
+   
+   @FXML Button currentCourse;
       
-   @FXML
-   private StackPane content;
+   @FXML private StackPane content;
+   
       
    
    @FXML
@@ -58,8 +59,18 @@ public class Lecturer_viewController implements Initializable {
    }
    
    @FXML
-   public void handleViewStundents(ActionEvent event) throws IOException{
+   public void handleCurrentCourse(ActionEvent event) throws IOException{
        
+        content.getChildren().clear();
+        content.getChildren().add(FXMLLoader.load(getClass().getResource("courseOption.fxml")));
+       
+   }
+   
+   @FXML
+   public void handleViewStudents(ActionEvent event) throws IOException{
+       
+        content.getChildren().clear();
+        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewStudents.fxml")));
        
    }
     /**
