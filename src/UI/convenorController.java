@@ -33,8 +33,8 @@ public class convenorController implements Initializable {
     
    @FXML
    private StackPane content;
-   @FXML
-   private StackPane OptionsContent;
+   @FXML private StackPane OptionsContent;
+   @FXML Button viewStudents;
    
     @FXML
    private StackPane EditContent;
@@ -57,8 +57,7 @@ public class convenorController implements Initializable {
     @FXML
    private Button editButton;
       
-    @FXML
-   private Button back;
+    @FXML private Button back;
     
    @FXML private Button editMarks;    
    @FXML private TextField fileName;
@@ -82,9 +81,20 @@ public class convenorController implements Initializable {
      public void handleCourse(ActionEvent event) throws IOException{
         
         content.getChildren().clear();
-        content.getChildren().add(FXMLLoader.load(getClass().getResource("convenorOptions.fxml")));
+        content.getChildren().add(FXMLLoader.load(getClass().getResource("courseOption.fxml")));
+        //content.getChildren().add(FXMLLoader.load(getClass().getResource("convenorOptions.fxml")));
          
-     }  
+     } 
+     
+     @FXML   
+     public void handleViewAll(ActionEvent event) throws IOException{
+        
+        content.getChildren().clear();
+        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewStudents.fxml")));
+        //content.getChildren().add(FXMLLoader.load(getClass().getResource("convenorOptions.fxml")));
+         
+     }
+     
     //OPTIONS
     @FXML
     public void handleEdit(ActionEvent event) throws IOException{

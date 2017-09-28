@@ -45,6 +45,29 @@ public class courseOptionController implements Initializable {
         
      }
     
+    @FXML
+    public void handleviewStudents(ActionEvent event) throws IOException{
+       
+        OptionsContent.getChildren().clear();
+        OptionsContent.getChildren().add(FXMLLoader.load(getClass().getResource("viewStudents.fxml")));
+        
+     }
+    @FXML
+    public void handleEditMarks(ActionEvent event) throws IOException{
+       
+        OptionsContent.getChildren().clear();
+        OptionsContent.getChildren().add(FXMLLoader.load(getClass().getResource("")));
+        
+     }
+    
+     @FXML
+    public void handleEditCourse(ActionEvent event) throws IOException{
+       
+        OptionsContent.getChildren().clear();
+        OptionsContent.getChildren().add(FXMLLoader.load(getClass().getResource("")));
+        
+     }
+    
     /**
      * Initializes the controller class.
      */

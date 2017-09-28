@@ -14,10 +14,10 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TreeTableColumn.CellDataFeatures;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -52,24 +52,24 @@ public class viewMarksController implements Initializable {
          
              TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
          
-            /* col.setCellValueFactory(new Callback<CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){ 
-             
-                 public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {                                                                                              
-                        return new SimpleStringProperty(param.getValue().toString());                        
-                    }                    
-                });*/
+             col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){                   
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {                                                                                             
+                     return new SimpleStringProperty(param.getValue().get(j).toString());                       
+                 }                   
+             });
+             table.getColumns().addAll(col);
                
                
            
-           table.getColumns().addAll(col); 
-           System.out.println("Column ["+i+"] ");
+           //table.getColumns().addAll(col); 
+           //System.out.println("Column ["+i+"] ");
          }
          
             /********************************
              * Data added to ObservableList *
              ********************************/
             
-            /*while(rs.next()){
+            while(rs.next()){
                 //Iterate Row
                 ObservableList<String> row = FXCollections.observableArrayList();
                 
@@ -81,10 +81,10 @@ public class viewMarksController implements Initializable {
                 System.out.println("Row [1] added "+row );
                 data.add(row);
 
-            }*/
+            }
 
             //FINALLY ADDED TO TableView
-            //table.setItems(data);
+            table.setItems(data);
            
     }
     
