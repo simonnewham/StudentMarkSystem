@@ -49,6 +49,7 @@ public class Convenor extends User{
             String insertMark = "UPDATE users.marks SET " + testName + "='" + testMarkString + "' WHERE studentname='" + studentName + "' and coursename ='CSC3003S'";
             myStatement.executeUpdate(insertMark);    
         }
+        myConn.close();
         
     }
     
@@ -58,6 +59,7 @@ public class Convenor extends User{
         
         String editMark = "UPDATE users.marks SET " + markInfo + "='" + newMark + "' WHERE studentname='" + studentName + "' and coursename ='CSC3003S'";
         myStatement.executeUpdate(editMark);
+        myConn.close();
     }
     
 }

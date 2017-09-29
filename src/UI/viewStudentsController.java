@@ -47,7 +47,7 @@ public class viewStudentsController implements Initializable {
         Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
         Statement myStatement = myConn.createStatement();
         ResultSet rs = myStatement.executeQuery("SELECT participants.student_id, participants.courses, users_login.first_name, users_login.surname, users_login.email\n" +
-                                                " FROM users.participants, users.users_login \n" +
+                                                "FROM users.participants, users.users_login \n" +
                                                 "WHERE participants.student_id = users_login.user_id");
        
         while (rs.next()){
