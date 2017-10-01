@@ -5,6 +5,7 @@
  */
 package UI;
 
+import Users.CurrentUser;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -21,8 +22,10 @@ import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.util.Callback;
 
 /**
@@ -33,17 +36,64 @@ import javafx.util.Callback;
 public class viewMarksController implements Initializable {
     
     @FXML TableView table;
+    @FXML Button searchSN;
+    @FXML Button searchCC;
+    @FXML TextField SN;
+    @FXML TextField CC;
     
     public ObservableList<ObservableList> data = FXCollections.observableArrayList(
             
      );
     
     @FXML
-    public void getMarks() throws FileNotFoundException, IOException, SQLException{
+    public void getStudent() throws FileNotFoundException, IOException, SQLException{
         
-        Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
-        Statement myStatement = myConn.createStatement();
-        ResultSet rs = myStatement.executeQuery("SELECT * FROM users.marks");
+        
+        String search = SN.getText();
+        
+        if(!search.equals("")){
+            //data.clear();
+            Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
+             Statement myStatement = myConn.createStatement();
+             ResultSet rs = myStatement.executeQuery("SELECT * FROM users.marks \n"
+                                               + "WHERE users.marks.studentname = '"+search.trim()+"'");
+            
+             this.getData_and_Set(rs);
+             myConn.close();
+            }
+        else{
+            this.getMarks();
+        }
+        SN.clear();
+     }
+    
+    @FXML
+    public void getCourse() throws FileNotFoundException, IOException, SQLException{
+        
+        String course = CC.getText();
+        
+         if(!course.equals("")){
+            //data.clear();
+            Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
+             Statement myStatement = myConn.createStatement();
+             ResultSet rs = myStatement.executeQuery("SELECT * FROM users.marks \n"
+                                               + "WHERE users.marks.coursename = '"+course.trim()+"'");
+            
+             this.getData_and_Set(rs);
+             myConn.close();
+            }
+        else{
+            this.getMarks();
+        }
+         CC.clear();
+     }
+    
+    @FXML 
+    public void getData_and_Set(ResultSet RS) throws FileNotFoundException, IOException, SQLException{
+        
+        data.clear();
+        ResultSet rs = RS;
+        table.getColumns().clear();
         
         //add columns
          for(int i=0 ; i<rs.getMetaData().getColumnCount(); i++){
@@ -58,17 +108,9 @@ public class viewMarksController implements Initializable {
                  }                   
              });
              table.getColumns().addAll(col);
-               
-               
-           
-           //table.getColumns().addAll(col); 
-           //System.out.println("Column ["+i+"] ");
+    
          }
-         
-            /********************************
-             * Data added to ObservableList *
-             ********************************/
-            
+         //add data          
             while(rs.next()){
                 //Iterate Row
                 ObservableList<String> row = FXCollections.observableArrayList();
@@ -85,7 +127,18 @@ public class viewMarksController implements Initializable {
 
             //FINALLY ADDED TO TableView
             table.setItems(data);
-           
+        
+    }
+   
+    @FXML
+    public void getMarks() throws FileNotFoundException, IOException, SQLException{
+        
+        Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
+        Statement myStatement = myConn.createStatement();
+        ResultSet rs = myStatement.executeQuery("SELECT * FROM users.marks");
+        
+        this.getData_and_Set(rs);
+        myConn.close();
     }
     
     /**
@@ -94,13 +147,16 @@ public class viewMarksController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        String user = CurrentUser.getUserName();
+        String role = CurrentUser.getUserRole();
+        System.out.println(role);
+        if(role.equals("S")){
+            SN.setText(user);
+            SN.setDisable(true);
+            CC.setDisable(true);
+            searchCC.setDisable(true);
+        }
         
-        try{
-            this.getMarks();
-        }
-        catch (IOException | SQLException e) {
-  
-        }
     }    
     
 }

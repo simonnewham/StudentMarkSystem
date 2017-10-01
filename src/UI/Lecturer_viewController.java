@@ -5,6 +5,8 @@
  */
 package UI;
 
+import Users.CurrentUser;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +18,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -26,11 +31,11 @@ import javafx.stage.Stage;
  */
 public class Lecturer_viewController implements Initializable {
 
-     @FXML private Button signout;
-   
-    
+   @FXML private Button signout;
+   @FXML Label welcome;
    @FXML private Button Viewmarks;
   
+   @FXML ImageView logo;
      
    @FXML private Button Viewstudents;
    
@@ -54,7 +59,7 @@ public class Lecturer_viewController implements Initializable {
    public void handleViewMarks(ActionEvent event) throws IOException{
        
         content.getChildren().clear();
-        content.getChildren().add(FXMLLoader.load(getClass().getResource("Lecturer_view2.fxml")));
+        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarks.fxml")));
 
    }
    
@@ -79,6 +84,11 @@ public class Lecturer_viewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        System.out.println(CurrentUser.getUserName());
+        welcome.setText("Welcome "+CurrentUser.getUserName());
+        File file = new File("logo.gif");
+        Image image = new Image(file.toURI().toString());
+        logo.setImage(image);
     }    
     
 }

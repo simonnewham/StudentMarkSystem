@@ -15,13 +15,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -41,7 +46,82 @@ public class viewStudentsController implements Initializable {
             
         );
     
-    private void getStudents() throws FileNotFoundException, IOException, SQLException{
+    
+    @FXML Button searchSN;
+    @FXML Button searchCC;
+    @FXML TextField SN;
+    @FXML TextField CC;
+    
+    
+    public void getStudent() throws FileNotFoundException, IOException, SQLException{
+        
+        
+        String search = SN.getText();
+        
+        if(!search.equals("")){
+            data.clear();
+            
+            Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
+            Statement myStatement = myConn.createStatement();
+            ResultSet rs = myStatement.executeQuery("SELECT participants.student_id, participants.courses, users_login.first_name, users_login.surname, users_login.email"
+                     + " FROM users.participants, users.users_login\n" +
+                        " WHERE participants.student_id = users_login.user_id AND participants.student_id='"+search+"'");
+
+           while (rs.next()){
+            data.add(new Student(
+                    rs.getString("student_id"),
+                    rs.getString("first_name"),
+                    rs.getString("surname"),
+                    rs.getString("email"),
+                    rs.getString("courses")
+
+            ));
+           
+        }
+           table.setItems(data);
+           myConn.close();
+        }
+        else{
+           this.getStudents();
+        }
+       
+    }
+    
+    
+    public void getCourse() throws FileNotFoundException, IOException, SQLException{
+        
+        String course = CC.getText();
+        
+        if(!course.equals("")){
+            data.clear();
+            
+            Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
+            Statement myStatement = myConn.createStatement();
+            ResultSet rs = myStatement.executeQuery("SELECT participants.student_id, participants.courses, users_login.first_name, users_login.surname, users_login.email"
+                     + " FROM users.participants, users.users_login\n" +
+                        " WHERE participants.student_id = users_login.user_id AND participants.courses='"+course+"'");
+
+           while (rs.next()){
+            data.add(new Student(
+                    rs.getString("student_id"),
+                    rs.getString("first_name"),
+                    rs.getString("surname"),
+                    rs.getString("email"),
+                    rs.getString("courses")
+
+            ));
+           
+        }
+           table.setItems(data);
+           myConn.close();
+        }
+        else{
+           this.getStudents();
+        }
+   
+    }
+    
+     private void getStudents() throws FileNotFoundException, IOException, SQLException{
         
          
         Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
@@ -61,7 +141,7 @@ public class viewStudentsController implements Initializable {
             ));
      
         }
-
+        table.setItems(data);
         myConn.close();
     } 
     /**
@@ -84,7 +164,7 @@ public class viewStudentsController implements Initializable {
         catch (IOException | SQLException e) {
   
         }
-        table.setItems(data);
+        
     }    
     
 }

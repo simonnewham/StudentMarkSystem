@@ -35,6 +35,7 @@ public class AdminStaffHomeController implements Initializable {
    @FXML Button viewStudents;
    @FXML Button viewCourses;
    @FXML Button newCourse;
+   @FXML Button viewMarks;
    
    @FXML
    public void handleSignOut(ActionEvent event) throws IOException{
@@ -66,6 +67,14 @@ public class AdminStaffHomeController implements Initializable {
        
        content.getChildren().clear();
        content.getChildren().add(FXMLLoader.load(getClass().getResource("AS_NewCourse.fxml")));
+       
+   }
+   
+   @FXML
+   public void hanldeMarks()throws IOException{
+       
+       content.getChildren().clear();
+       content.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarks.fxml")));
        
    }
     /**

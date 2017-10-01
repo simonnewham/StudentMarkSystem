@@ -5,6 +5,8 @@
  */
 package UI;
 
+import Users.CurrentUser;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -19,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -31,33 +34,26 @@ import javafx.stage.Stage;
 public class convenorController implements Initializable {
 
     
-   @FXML
-   private StackPane content;
+   @FXML private StackPane content;  
    @FXML private StackPane OptionsContent;
+   
    @FXML Button viewStudents;
-   
-    @FXML
-   private StackPane EditContent;
+   @FXML Button viewCourses;
+   @FXML Button searchMarks;
+   @FXML private Button course;
+   @FXML private Button signout;
     
-   @FXML
-   private StackPane EditView;
-     
-   @FXML
-   private Button course;
+   @FXML private StackPane EditContent;
     
-   @FXML
-   private Button signout;
-     
-   @FXML
-   private ImageView logo;
+  
+   @FXML private StackPane EditView;
+  
+   @FXML private ImageView logo;
    
-   @FXML
-   private Button importButton;
-     
-    @FXML
-   private Button editButton;
-      
-    @FXML private Button back;
+   
+   @FXML private Button importButton; 
+   @FXML private Button editButton;
+   @FXML private Button back;
     
    @FXML private Button editMarks;    
    @FXML private TextField fileName;
@@ -82,7 +78,6 @@ public class convenorController implements Initializable {
         
         content.getChildren().clear();
         content.getChildren().add(FXMLLoader.load(getClass().getResource("courseOption.fxml")));
-        //content.getChildren().add(FXMLLoader.load(getClass().getResource("convenorOptions.fxml")));
          
      } 
      
@@ -91,7 +86,23 @@ public class convenorController implements Initializable {
         
         content.getChildren().clear();
         content.getChildren().add(FXMLLoader.load(getClass().getResource("viewStudents.fxml")));
-        //content.getChildren().add(FXMLLoader.load(getClass().getResource("convenorOptions.fxml")));
+
+     }
+     
+     @FXML   
+     public void handleCourses(ActionEvent event) throws IOException{
+        
+        content.getChildren().clear();
+        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewCourses.fxml")));
+         
+     }
+     
+     @FXML   
+     public void handleMarks(ActionEvent event) throws IOException{
+        
+        content.getChildren().clear();
+        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarks.fxml")));
+        
          
      }
      
@@ -104,7 +115,7 @@ public class convenorController implements Initializable {
         
     }
          
-    //HANDLE MARKS
+   //HANDLE MARKS
    @FXML
     public void handleImportMarks() throws IOException, FileNotFoundException, SQLException{
         Users.Convenor.importMarks(fileName.getText());
@@ -133,6 +144,11 @@ public class convenorController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         //load logo
+        System.out.println(CurrentUser.getUserName());
+        //welcome.setText("Welcome "+CurrentUser.getUserName());
+        File file = new File("logo.gif");
+        Image image = new Image(file.toURI().toString());
+        logo.setImage(image);
         
     }    
     

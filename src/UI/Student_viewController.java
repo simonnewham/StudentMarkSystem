@@ -5,6 +5,8 @@
  */
 package UI;
 
+import Users.CurrentUser;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +18,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -26,12 +31,14 @@ import javafx.stage.Stage;
  */
 public class Student_viewController implements Initializable {
     
-    @FXML
-   private StackPane content;
-    @FXML
-   private Button viewMarks;
-     @FXML
-   private Button viewDetails;
+    @FXML private StackPane content;
+
+    @FXML private Button viewMarks;
+    @FXML private Button viewDetails;
+    @FXML private Button viewCourses;
+    @FXML Label welcome;
+    @FXML ImageView logo;
+   
      
     @FXML   
      public void handleSignOut(ActionEvent event) throws IOException{
@@ -43,12 +50,35 @@ public class Student_viewController implements Initializable {
          app_stage.show();
     
     }
+     
+     @FXML   
+     public void handleViewMarks(ActionEvent event) throws IOException{
+        
+        content.getChildren().clear();
+        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarks.fxml")));
+        
+    
+    }
+     
+    @FXML   
+    public void handleViewCourses(ActionEvent event) throws IOException{
+        
+        content.getChildren().clear();
+        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewCourses.fxml")));
+    
+    }
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        System.out.println(CurrentUser.getUserName());
+        welcome.setText("Welcome \n"+CurrentUser.getUserName());
+        File file = new File("logo.gif");
+        Image image = new Image(file.toURI().toString());
+        logo.setImage(image);
     }    
     
 }

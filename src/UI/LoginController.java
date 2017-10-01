@@ -55,16 +55,18 @@ public class LoginController implements Initializable {
        String u = username.getText();
        String p = passwordField.getText();
        
-       
-      
-       
+  
        Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
        Statement myStatement = myConn.createStatement();
        ResultSet myRltSet = myStatement.executeQuery("select * from users_login");
        
        while (myRltSet.next()){
           if (u.equals(myRltSet.getString("user_id")) && p.equals(myRltSet.getString("password"))){
-                
+               
+              //set current user to username entered
+              CurrentUser.setUserName(u);
+              CurrentUser.setUserRole(myRltSet.getString("role"));
+              
                System.out.println("Welcome "+ myRltSet.getString("first_name") + " " + myRltSet.getString("surname"));
                
                         //if convenor

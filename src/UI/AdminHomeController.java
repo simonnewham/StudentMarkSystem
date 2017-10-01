@@ -5,6 +5,8 @@
  */
 package UI;
 
+import Users.CurrentUser;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +18,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -26,10 +30,9 @@ import javafx.stage.Stage;
  */
 public class AdminHomeController implements Initializable {
     
-    @FXML
-   private StackPane content;
-    @FXML
-   private Button addUser;
+    @FXML private StackPane content;
+    @FXML ImageView logo;
+    @FXML private Button addUser;
     @FXML private Button deleteUser;
     @FXML private Button viewUsers;
     @FXML private Button signout;
@@ -82,6 +85,10 @@ public class AdminHomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        System.out.println(CurrentUser.getUserName());
+        File file = new File("admin.png");
+        Image image = new Image(file.toURI().toString());
+        logo.setImage(image);
     }    
     
 }
