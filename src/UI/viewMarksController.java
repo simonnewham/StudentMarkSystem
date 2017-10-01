@@ -6,8 +6,13 @@
 package UI;
 
 import Users.CurrentUser;
+import Users.Student;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -17,13 +22,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Arrays;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.util.Callback;
@@ -40,6 +48,10 @@ public class viewMarksController implements Initializable {
     @FXML Button searchCC;
     @FXML TextField SN;
     @FXML TextField CC;
+    
+    @FXML TextField file;
+    @FXML Button export;
+    @FXML Label msg;
     
     public ObservableList<ObservableList> data = FXCollections.observableArrayList(
             
@@ -141,6 +153,77 @@ public class viewMarksController implements Initializable {
         myConn.close();
     }
     
+    @FXML
+    public void handleExport() throws Exception{
+        
+        Writer writer = null;
+        String filename = file.getText();
+        file.clear();
+        
+        ArrayList<ArrayList<String>> content = this.getContent();
+        
+            try {
+                File file = new File(filename+".csv");
+                writer = new BufferedWriter(new FileWriter(file));
+                
+                for (int j=0; j<content.size(); j++) {
+                    String text="";
+                        for(int i=0; i< content.get(j).size(); i++){
+                            text=text+content.get(j).get(i)+";";  
+                        } 
+                   text.substring(0, text.length()-1);
+                   text=text+"\n";
+                   writer.write(text);
+                }        
+                   
+                msg.setText(filename+".csv Exported");
+                }
+             catch (Exception ex) {
+                ex.printStackTrace();
+                msg.setText("Error with export");
+            }
+            finally {
+
+                writer.flush();
+                writer.close();
+            }
+   
+    }
+    private ArrayList<ArrayList<String>> getContent(){
+        
+        ArrayList<ArrayList<String>> values = new ArrayList<ArrayList<String>>();
+        ObservableList<TableColumn> columns = table.getColumns();
+        
+        for (Object row : table.getItems()) {
+            ArrayList<String> value = new ArrayList<>();
+            for (TableColumn column : columns) {
+                
+                
+                value.add(
+                    (String) column.
+                    getCellObservableValue(row).getValue());
+                
+            }
+            values.add(value);
+          } 
+         
+         for(int i=0; i<values.size(); i++){
+             System.out.println(values.get(i));
+                     
+         }
+        return values;
+    }
+    
+    @FXML 
+    public void handleSelected() throws Exception{
+        
+        TablePosition pos = (TablePosition) table.getSelectionModel().getSelectedCells().get(0);
+        int index = pos.getRow();
+        String selected = table.getItems().get(index).toString();
+        //selected = selected.substring(1, selected.indexOf(",")); //only get username
+        System.out.println(selected);   
+        
+    }
     /**
      * Initializes the controller class.
      */

@@ -27,17 +27,17 @@
          </children></StackPane>
       <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="150.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #C5C8CA;" GridPane.rowIndex="1">
          <children>
-            <Button fx:id="addUser" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addUser" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: white;" text="Add User" textAlignment="CENTER">
+            <Button fx:id="addUser" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addUser" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: white;" text="Add User" textAlignment="CENTER">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="deleteUser" alignment="CENTER" mnemonicParsing="false" onAction="#deleteUser" prefHeight="27.0" prefWidth="103.0" style="-fx-background-color: white;" text="Remove User">
+            <Button fx:id="deleteUser" alignment="CENTER" mnemonicParsing="false" onAction="#deleteUser" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: white;" text="Remove User">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="viewUsers" alignment="CENTER" mnemonicParsing="false" onAction="#handleviewUsers" style="-fx-background-color: white;" text="View All Users">
+            <Button fx:id="viewUsers" alignment="CENTER" mnemonicParsing="false" onAction="#handleviewUsers" prefWidth="120.0" style="-fx-background-color: white;" text="View All Users">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
