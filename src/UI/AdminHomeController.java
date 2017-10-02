@@ -38,7 +38,7 @@ public class AdminHomeController implements Initializable {
     @FXML private Button signout;
    
      
-    @FXML
+   @FXML
    public void addUser(ActionEvent event) throws IOException{
        
         content.getChildren().clear();
@@ -52,7 +52,7 @@ public class AdminHomeController implements Initializable {
 
    }
    
-    @FXML
+   @FXML
    public void deleteUser(ActionEvent event) throws IOException{
        
         content.getChildren().clear();

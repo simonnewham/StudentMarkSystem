@@ -3,12 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/simonnewham/NetBeansProjects/Student_2/src/UI/LoginController.java</file>
-            <file>file:/Users/simonnewham/NetBeansProjects/Student_2/src/Users/Convenor.java</file>
-            <file>file:/Users/simonnewham/NetBeansProjects/Student_2/src/UI/Admin_allUsersController.java</file>
-            <file>file:/Users/simonnewham/NetBeansProjects/Student_2/src/UI/Starter.java</file>
-            <file>file:/Users/simonnewham/NetBeansProjects/Student_2/src/UI/Admin_allUsers.fxml</file>
-            <file>file:/Users/simonnewham/NetBeansProjects/Student_2/src/Users/User.java</file>
+            <file>file:/Users/simonnewham/NetBeansProjects/StudentMarkSystem/src/UI/AdminRolesContoller.java</file>
+            <file>file:/Users/simonnewham/NetBeansProjects/StudentMarkSystem/src/UI/AdminStaffHomeController.java</file>
+            <file>file:/Users/simonnewham/NetBeansProjects/StudentMarkSystem/src/UI/AdminDelete.fxml</file>
+            <file>file:/Users/simonnewham/NetBeansProjects/StudentMarkSystem/src/UI/viewMarksController.java</file>
+            <file>file:/Users/simonnewham/NetBeansProjects/StudentMarkSystem/src/UI/convenorController.java</file>
+            <file>file:/Users/simonnewham/NetBeansProjects/StudentMarkSystem/src/UI/viewStudentsController.java</file>
+            <file>file:/Users/simonnewham/NetBeansProjects/StudentMarkSystem/src/UI/Student_viewController.java</file>
+            <file>file:/Users/simonnewham/NetBeansProjects/StudentMarkSystem/src/UI/Starter.java</file>
+            <file>file:/Users/simonnewham/NetBeansProjects/StudentMarkSystem/src/UI/AdminHomeController.java</file>
         </group>
     </open-files>
 </project-private>
