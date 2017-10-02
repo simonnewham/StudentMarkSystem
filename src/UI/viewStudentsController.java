@@ -5,6 +5,7 @@
  */
 package UI;
 
+import Courses.CourseClicked;
 import Users.*;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -193,12 +194,30 @@ public class viewStudentsController implements Initializable {
         course.setCellValueFactory(new PropertyValueFactory <Student, String>("course"));
         email.setCellValueFactory(new PropertyValueFactory <Student, String>("email"));
         
-        
-        try{
-            this.getStudents();
-        }
-        catch (IOException | SQLException e) {
+        if(CourseClicked.getClicked()){ //AS staff only
+            
+            CC.setText(CourseClicked.getCourse());
+            try{
+            this.getCourse();
+            }
+            catch (IOException | SQLException e) {
   
+            }
+            SN.setVisible(false);
+            CC.setVisible(false);
+            searchSN.setVisible(false);
+            searchCC.setVisible(false);
+                    
+        }
+        
+        else{
+            
+            try{
+                this.getStudents();
+            }
+            catch (IOException | SQLException e) {
+
+            }
         }
         
     }    

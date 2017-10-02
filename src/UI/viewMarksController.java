@@ -5,8 +5,8 @@
  */
 package UI;
 
+import Courses.CourseClicked;
 import Users.CurrentUser;
-import Users.Student;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,7 +23,6 @@ import javafx.fxml.Initializable;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -232,7 +231,9 @@ public class viewMarksController implements Initializable {
         // TODO
         String user = CurrentUser.getUserName();
         String role = CurrentUser.getUserRole();
+        
         System.out.println(role);
+        
         if(role.equals("S")){
             SN.setText(user);
             SN.setDisable(true);
@@ -240,6 +241,24 @@ public class viewMarksController implements Initializable {
             searchCC.setDisable(true);
         }
         
+        else if(CourseClicked.getClicked()==true){ //admin clicked on it
+                      
+            CC.setText(CourseClicked.getCourse());
+            SN.setVisible(false);
+            CC.setVisible(false);
+            CC.setVisible(false);
+            searchSN.setVisible(false);
+            searchCC.setVisible(false);
+            
+            try{
+                this.getCourse();
+            }
+            catch (IOException | SQLException e) {
+
+            }
+            
+        }
+ 
     }    
     
 }

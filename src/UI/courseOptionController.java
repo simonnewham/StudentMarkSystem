@@ -5,6 +5,8 @@
  */
 package UI;
 
+import Courses.CourseClicked;
+import Users.CurrentUser;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
 /**
@@ -29,11 +32,13 @@ public class courseOptionController implements Initializable {
     @FXML private Button viewMarks; 
     @FXML private Button courseDetails; 
     
+    @FXML Label title;
+    
     @FXML
     public void handleEdit(ActionEvent event) throws IOException{
        
         OptionsContent.getChildren().clear();
-        OptionsContent.getChildren().add(FXMLLoader.load(getClass().getResource("convenor_EditMarks.fxml")));
+        OptionsContent.getChildren().add(FXMLLoader.load(getClass().getResource("EditMarks.fxml")));
         
      }
     
@@ -74,6 +79,10 @@ public class courseOptionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        if(CurrentUser.getUserRole().equals("AS")){
+             //only edit this
+             title.setText(CourseClicked.getCourse());
+        }
     }    
     
 }

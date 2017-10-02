@@ -51,15 +51,15 @@ public class convenorController implements Initializable {
    @FXML private ImageView logo;
    
    
-   @FXML private Button importButton; 
-   @FXML private Button editButton;
-   @FXML private Button back;
-    
-   @FXML private Button editMarks;    
-   @FXML private TextField fileName;
-   @FXML private TextField studentNumber;
-   @FXML private TextField testName;   
-   @FXML private TextField testMark;
+//   @FXML private Button importButton; 
+//   @FXML private Button editButton;
+//   @FXML private Button back;
+//    
+//   @FXML private Button editMarks;    
+//   @FXML private TextField fileName;
+//   @FXML private TextField studentNumber;
+//   @FXML private TextField testName;   
+//   @FXML private TextField testMark;
    
         
      //HOME
@@ -116,27 +116,9 @@ public class convenorController implements Initializable {
     }
          
    //HANDLE MARKS
-   @FXML
-    public void handleImportMarks() throws IOException, FileNotFoundException, SQLException{
-        Users.Convenor.importMarks(fileName.getText());
-        fileName.clear();
-               
-    }
-    @FXML
-    public void handleEditMark() throws SQLException{
-        Users.Convenor.editMarks(studentNumber.getText(), testName.getText(), testMark.getText());
-        studentNumber.clear();
-        testName.clear();
-        testMark.clear();
-    }
+  
     
-    @FXML
-    public void handleBack(ActionEvent event) throws IOException{
-        
-        OptionsContent.getChildren().clear();
-        OptionsContent.getChildren().add(FXMLLoader.load(getClass().getResource("convenorOptions.fxml")));
-         
-    }
+    
     /**
      * Initializes the controller class.
      */

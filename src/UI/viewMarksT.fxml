@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="658.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="UI.viewMarksTController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="ALWAYS" maxWidth="200.0" minWidth="10.0" prefWidth="180.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="481.2908020019531" minWidth="10.0" prefWidth="481.2908020019531" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <TableView prefHeight="435.0" prefWidth="497.0" GridPane.columnIndex="1">
+        <columns>
+          <TableColumn prefWidth="110.20799255371094" text="Student Number" />
+          <TableColumn prefWidth="80.79205322265625" text="Class Mark" />
+            <TableColumn prefWidth="50.0" text="DP" />
+            <TableColumn prefWidth="113.08294677734375" text="Exam Mark" />
+            <TableColumn prefWidth="164.9974365234375" text="Final Mark" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</GridPane>

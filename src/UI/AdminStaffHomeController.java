@@ -5,6 +5,7 @@
  */
 package UI;
 
+import Courses.CourseClicked;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -44,12 +45,13 @@ public class AdminStaffHomeController implements Initializable {
        Scene home_scene = new Scene(home_parent);
        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //current stage
        app_stage.setScene(home_scene);
-       app_stage.show();  
+       app_stage.show(); 
+       CourseClicked.Clear();
    }
    
    @FXML
    public void hanldeviewCourses()throws IOException{
-       
+       CourseClicked.Clear();
        content.getChildren().clear();
        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewCourses.fxml")));
        
@@ -57,14 +59,14 @@ public class AdminStaffHomeController implements Initializable {
    
    @FXML
    public void hanldeviewStudents()throws IOException{
-       
+       CourseClicked.Clear();
        content.getChildren().clear();
        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewStudents.fxml")));
        
    }
    @FXML
    public void hanldeNewCourse()throws IOException{
-       
+       CourseClicked.Clear();
        content.getChildren().clear();
        content.getChildren().add(FXMLLoader.load(getClass().getResource("AS_NewCourse.fxml")));
        
@@ -72,7 +74,7 @@ public class AdminStaffHomeController implements Initializable {
    
    @FXML
    public void hanldeMarks()throws IOException{
-       
+       CourseClicked.Clear();
        content.getChildren().clear();
        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarks.fxml")));
        
