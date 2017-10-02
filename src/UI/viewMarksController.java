@@ -235,10 +235,21 @@ public class viewMarksController implements Initializable {
         System.out.println(role);
         
         if(role.equals("S")){
+          
             SN.setText(user);
-            SN.setDisable(true);
-            CC.setDisable(true);
-            searchCC.setDisable(true);
+            SN.setVisible(false);
+            CC.setVisible(false);
+            CC.setVisible(false);
+            searchSN.setVisible(false);
+            searchCC.setVisible(false);
+
+            try{
+                this.getStudent();
+            }
+            catch (IOException | SQLException e) {
+                
+            }
+
         }
         
         else if(CourseClicked.getClicked()==true){ //admin clicked on it

@@ -7,6 +7,7 @@ package Users;
 
 import Users.*;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -16,11 +17,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 /**
  *
  * @author simonnewham
  */
 public class Convenor extends User{
+    public String convenorSubject;
     
     
     public Convenor(String u,String f, String l,  String e, String p, String r){
@@ -29,35 +32,37 @@ public class Convenor extends User{
        
     }
     
-    public static void importMarks(String fileName) throws FileNotFoundException, IOException, SQLException{
+    public static void importMarks(String course, String fileName, String assessName) throws FileNotFoundException, IOException, SQLException{
         
-        BufferedReader br = new BufferedReader(new FileReader(fileName));
-        String currentLine;
+        String currentcourse = course;
+        
+        Scanner s = new Scanner(new File(fileName));
         
         Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
         Statement myStatement = myConn.createStatement();
-        String testName = br.readLine();
-        String insertColumn =   "ALTER TABLE users.marks ADD "+ testName +" INT";
+        String insertColumn =   "ALTER TABLE users.marks ADD "+ assessName +" INT";
                     
         myStatement.executeUpdate(insertColumn);        
-        while ((currentLine = br.readLine()) != null){
-            String[] lineParts = currentLine.split(" ");
+        while (s.hasNext()){
+            String tempString = s.next();
+            String[] lineParts = tempString.split(";");
             String studentName = lineParts[0];
             String testMarkString = lineParts[1];
             int testMark = Integer.parseInt(testMarkString);
             
-            String insertMark = "UPDATE users.marks SET " + testName + "='" + testMarkString + "' WHERE studentname='" + studentName + "' and coursename ='CSC3003S'";
+            String insertMark = "UPDATE users.marks SET " + assessName + "='" + testMarkString + "' WHERE studentname='" + studentName + "' and coursename ='"+currentcourse+"'";
             myStatement.executeUpdate(insertMark);    
         }
         myConn.close();
         
     }
     
-    public static void editMarks(String studentName, String markInfo, String newMark) throws SQLException{
+    public static void editMarks(String course,String studentName, String markInfo, String newMark) throws SQLException{
+        String currentcourse =course;
         Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
         Statement myStatement = myConn.createStatement();
         
-        String editMark = "UPDATE users.marks SET " + markInfo + "='" + newMark + "' WHERE studentname='" + studentName + "' and coursename ='CSC3003S'";
+        String editMark = "UPDATE users.marks SET " + markInfo + "='" + newMark + "' WHERE studentname='" + studentName + "' and coursename ='"+currentcourse+"'";
         myStatement.executeUpdate(editMark);
         myConn.close();
     }

@@ -6,6 +6,10 @@
 package Users;
 
 import Courses.Course;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -27,8 +31,13 @@ public class AdminStaff extends User{
         return all_courses;
     }
     
-    //edit marks
-    
-    //view marks
+   public static void addCourse(String courseName, String year, String convenor,String lecturer) throws SQLException{
+        Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
+        Statement myStatement = myConn.createStatement();
+        
+        String insertCourse = "INSERT INTO `users`.`courses` (`course_id`, `convenorname`, `courseyear`, `lecturer`) VALUES ('" + courseName + "', '" + convenor +"', '" + year + "', '" + lecturer + "')";
+        
+        myStatement.executeUpdate(insertCourse);
+    }
     
 }

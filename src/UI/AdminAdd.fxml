@@ -3,9 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -33,7 +33,7 @@
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" text="Add User" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAddUser" text="Add User" />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1">
@@ -43,7 +43,7 @@
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <TextField />
+                  <TextField fx:id="firstname" />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -53,7 +53,7 @@
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <children>
-                  <TextField>
+                  <TextField fx:id="surname">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -67,19 +67,17 @@
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <TextField />
+                  <TextField fx:id="username" />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <children>
-                  <SplitMenuButton contentDisplay="CENTER" mnemonicParsing="false" text="Role" StackPane.alignment="CENTER">
+                  <MenuButton fx:id="roleButton" mnemonicParsing="false" wrapText="true">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Admin Staff" />
-                      <MenuItem mnemonicParsing="false" text="Course Convenor" />
-                        <MenuItem mnemonicParsing="false" text="Lecturer" />
-                        <MenuItem mnemonicParsing="false" text="Student" />
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
                     </items>
-                  </SplitMenuButton>
+                  </MenuButton>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
@@ -94,7 +92,7 @@
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <children>
-                  <PasswordField />
+                  <PasswordField fx:id="confirmPassword" />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
@@ -108,7 +106,7 @@
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <PasswordField />
+                  <PasswordField fx:id="password" />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
@@ -125,10 +123,10 @@
                   </Label>
                </children>
             </StackPane>
-            <TextField promptText="File name" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="fileName" promptText="File name" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <children>
-                  <Button mnemonicParsing="false" text="Import User List" />
+                  <Button mnemonicParsing="false" onAction="#handleimportUser" text="Import User List" />
                </children>
             </StackPane>
          </children>

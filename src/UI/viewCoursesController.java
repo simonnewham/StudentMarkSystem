@@ -46,6 +46,48 @@ public class viewCoursesController implements Initializable {
     String user;
     String role;
     
+    @FXML public void getForStudent(String user) throws FileNotFoundException, IOException, SQLException{
+        
+        Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
+        Statement myStatement = myConn.createStatement();
+        ResultSet rs = myStatement.executeQuery("SELECT * FROM users.courses WHERE ");
+        
+        //add columns
+         for(int i=0 ; i<rs.getMetaData().getColumnCount(); i++){
+             //We are using non property style for making dynamic table
+            final int j = i;  
+         
+             TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+         
+             col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){                   
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {                                                                                             
+                     return new SimpleStringProperty(param.getValue().get(j).toString());                       
+                 }                   
+             });
+             table.getColumns().addAll(col);
+
+         }
+         
+         while(rs.next()){
+                //Iterate Row
+                ObservableList<String> row = FXCollections.observableArrayList();
+                
+                for(int i=1 ; i<=rs.getMetaData().getColumnCount(); i++){
+                    //Iterate Column
+                    row.add(rs.getString(i));
+                }
+                
+                System.out.println("Row [1] added "+row );
+                data.add(row);
+
+        }
+
+        table.setItems(data);
+        myConn.close();
+        
+        
+        
+    }
     @FXML
     public void getCourses() throws FileNotFoundException, IOException, SQLException{
         
@@ -69,11 +111,7 @@ public class viewCoursesController implements Initializable {
 
          }
          
-            /********************************
-             * Data added to ObservableList *
-             ********************************/
-            
-            while(rs.next()){
+         while(rs.next()){
                 //Iterate Row
                 ObservableList<String> row = FXCollections.observableArrayList();
                 
@@ -85,10 +123,10 @@ public class viewCoursesController implements Initializable {
                 System.out.println("Row [1] added "+row );
                 data.add(row);
 
-            }
+        }
 
         table.setItems(data);
-         myConn.close();
+        myConn.close();
     }
     
     @FXML 
@@ -113,12 +151,20 @@ public class viewCoursesController implements Initializable {
         user = CurrentUser.getUserName();
         role = CurrentUser.getUserRole();
         
-        try{
-            this.getCourses();
-        }
-        catch (IOException | SQLException e) {
+//        if(role.equals("S")){
+//            this.getForStudent(user);
+//        }
+        
+       // else{
+            
+            try{
+                this.getCourses();
+            }
+            catch (IOException | SQLException e) {
   
-        }
+            }
+        //}
+        
     }      
     
 }

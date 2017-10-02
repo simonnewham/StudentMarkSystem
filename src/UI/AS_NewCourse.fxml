@@ -4,8 +4,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -29,8 +29,8 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Label>
-            <TextField promptText="Course Code" />
-            <TextField promptText="Year" />
+            <TextField fx:id="courseName" promptText="Course Code" />
+            <TextField fx:id="courseYear" promptText="Year" />
             <CheckBox mnemonicParsing="false" text="Activate Course">
                <VBox.margin>
                   <Insets top="10.0" />
@@ -46,23 +46,23 @@
                </VBox.margin>
             </Label>
             <Label text="Course Convenor" />
-            <SplitMenuButton mnemonicParsing="false" prefHeight="27.0" prefWidth="134.0" text="Select">
+            <MenuButton fx:id="convenorButton" mnemonicParsing="false" onAction="#handleConvenorButton" prefHeight="37.0" prefWidth="142.0">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
               </items>
-            </SplitMenuButton>
+            </MenuButton>
             <Label text="Lecturers">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <SplitMenuButton mnemonicParsing="false" prefHeight="27.0" prefWidth="139.0" text="Select">
+            <MenuButton fx:id="lectureButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="142.0">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
               </items>
-            </SplitMenuButton>
+            </MenuButton>
             <Button mnemonicParsing="false" text="Add Lecturer">
                <VBox.margin>
                   <Insets top="10.0" />
@@ -73,7 +73,7 @@
       </VBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: #3C9D1C;" text="Add Course" textFill="WHITE" />
+            <Button fx:id="addCourse" mnemonicParsing="false" onAction="#handleAddCourse" style="-fx-background-color: #3C9D1C;" text="Add Course" textFill="WHITE" />
             <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="92.0" style="-fx-background-color: #C54A2F;" text="Cancel" textFill="WHITE">
                <VBox.margin>
                   <Insets top="10.0" />
