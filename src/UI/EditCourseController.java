@@ -55,11 +55,14 @@ public class EditCourseController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        //Admin staff
         if(CurrentUser.getUserRole().equals("AS")){
             course = CourseClicked.getCourse();
         }
-        else{//convenor
+
+        //convenor
+        else{
             course = "CSC3003S";
         }
         //System.out.println(course);
