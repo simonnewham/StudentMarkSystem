@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="576.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AdminStaffHomeController">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="580.0" prefWidth="1011.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AdminStaffHomeController">
   <columnConstraints>
     <ColumnConstraints hgrow="ALWAYS" maxWidth="180.0" minWidth="10.0" prefWidth="141.8564453125" />
     <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="552.1435546875" />
@@ -32,7 +32,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="viewCourses" alignment="CENTER" mnemonicParsing="false" onAction="#hanldeviewCourses" prefHeight="27.0" prefWidth="140.0" style="-fx-background-color: white;" text="View Courses">
+            <Button fx:id="viewCourses" alignment="CENTER" mnemonicParsing="false" onAction="#hanldeviewCourses" prefHeight="27.0" prefWidth="140.0" style="-fx-background-color: white;" text="Select Course">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
@@ -51,7 +51,7 @@
       </VBox>
       <StackPane maxWidth="180.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #3E90AD;">
          <children>
-            <Label text="Admin Staff" textAlignment="JUSTIFY" textFill="#fffefe" StackPane.alignment="CENTER">
+            <Label fx:id="welcome" text="Admin Staff" textAlignment="CENTER" textFill="#fffefe" StackPane.alignment="CENTER">
                <font>
                   <Font name="System Font" size="18.0" />
                </font>

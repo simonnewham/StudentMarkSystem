@@ -78,7 +78,7 @@ public class LoginController implements Initializable {
                        
                            app_stage.hide();
                            app_stage.setScene(home_scene);
-                           app_stage.setTitle("CC view");
+                           //app_stage.setTitle("CC view");
                            app_stage.show();
                         }
                         //if student

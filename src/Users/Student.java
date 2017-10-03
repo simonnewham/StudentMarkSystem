@@ -19,9 +19,9 @@ public class Student extends Person {
     private ArrayList<String> courses = new ArrayList<String>();
     private ArrayList marks = new ArrayList();
     
-    public Student(String u,String f, String l,  String e, String c){
+    public Student(String u,String f, String l,  String c){
         
-        super(u, f, l, e);
+        super(u, f, l);
         course =c;
     }
 

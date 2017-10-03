@@ -30,6 +30,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 
 /**
  * FXML Controller class
@@ -38,12 +39,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class viewStudentsController implements Initializable {
     
+    @FXML GridPane grid;
     @FXML private TableView<Student> table;
     @FXML TableColumn<Student, String> user_id;
     @FXML TableColumn<Student, String> first_name;
     @FXML TableColumn<Student, String> surname;
     @FXML TableColumn<Student, String> course;
-    @FXML TableColumn<Student, String> email;
+    //@FXML TableColumn<Student, String> email;
     
     public ObservableList<Student> data = FXCollections.observableArrayList(
             
@@ -60,9 +62,9 @@ public class viewStudentsController implements Initializable {
     
     @FXML
     public void getStudent() throws FileNotFoundException, IOException, SQLException{
-        
-        
+
         String search = SN.getText();
+        SN.clear();
         
         if(!search.equals("")){
             data.clear();
@@ -78,7 +80,7 @@ public class viewStudentsController implements Initializable {
                     rs.getString("student_id"),
                     rs.getString("first_name"),
                     rs.getString("surname"),
-                    rs.getString("email"),
+                    //rs.getString("email"),
                     rs.getString("courses")
 
             ));
@@ -97,6 +99,7 @@ public class viewStudentsController implements Initializable {
     public void getCourse() throws FileNotFoundException, IOException, SQLException{
         
         String course = CC.getText();
+        CC.clear();
         
         if(!course.equals("")){
             data.clear();
@@ -112,7 +115,7 @@ public class viewStudentsController implements Initializable {
                     rs.getString("student_id"),
                     rs.getString("first_name"),
                     rs.getString("surname"),
-                    rs.getString("email"),
+                    //rs.getString("email"),
                     rs.getString("courses")
 
             ));
@@ -141,7 +144,7 @@ public class viewStudentsController implements Initializable {
                     rs.getString("student_id"),
                     rs.getString("first_name"),
                     rs.getString("surname"),
-                    rs.getString("email"),
+                    //rs.getString("email"),
                     rs.getString("courses")
 
             ));
@@ -164,7 +167,7 @@ public class viewStudentsController implements Initializable {
                 for (Student student : data) {
 
                     String text = student.getUsername()+";" + student.getFirst() + ";" + student.getLast()
-                            + ";"+ student.getCourse()+";"+ student.getEmail()+"\n";
+                            + ";"+ student.getCourse()+"\n";
 
                     writer.write(text);
                     msg.setText(filename+".csv Exported Successfully");
@@ -192,8 +195,9 @@ public class viewStudentsController implements Initializable {
         first_name.setCellValueFactory(new PropertyValueFactory<Student, String> ("first"));
         surname.setCellValueFactory(new PropertyValueFactory <Student, String>("last"));
         course.setCellValueFactory(new PropertyValueFactory <Student, String>("course"));
-        email.setCellValueFactory(new PropertyValueFactory <Student, String>("email"));
+        //email.setCellValueFactory(new PropertyValueFactory <Student, String>("email"));
         
+        //Accessed by AS
         if(CourseClicked.getClicked()){ //AS staff only
             
             CC.setText(CourseClicked.getCourse());
@@ -207,9 +211,25 @@ public class viewStudentsController implements Initializable {
             CC.setVisible(false);
             searchSN.setVisible(false);
             searchCC.setVisible(false);
-                    
+            
         }
-        
+        //accessed by CC
+        else if(UI.EditCourseController.course !=null){
+            
+             CC.setText(UI.EditCourseController.course);
+            try{
+                this.getCourse();
+            }
+            catch (IOException | SQLException e) {
+  
+            }
+            SN.setVisible(false);
+            CC.setVisible(false);
+            searchSN.setVisible(false);
+            searchCC.setVisible(false);
+            
+        }
+        //when not accessed through courseOptions
         else{
             
             try{

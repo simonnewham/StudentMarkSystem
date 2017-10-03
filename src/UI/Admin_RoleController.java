@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
@@ -31,6 +32,7 @@ public class Admin_RoleController implements Initializable {
     @FXML private TextField fileName;
     @FXML private MenuButton roleButton;
     public String role;
+    @FXML Label msg;
     
     @FXML
     public void handleAddUser() throws SQLException{
@@ -56,6 +58,7 @@ public class Admin_RoleController implements Initializable {
     public void handleimportUser() throws SQLException, FileNotFoundException{
         Users.Admin.handleImportUser(fileName.getText());
         fileName.clear();
+        msg.setText("Import successfull");
     }
     
     @FXML

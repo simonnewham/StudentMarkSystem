@@ -7,7 +7,6 @@ package UI;
 
 import Users.CurrentUser;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -24,7 +23,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
@@ -54,22 +53,12 @@ public class convenorController implements Initializable {
   
    @FXML private ImageView logo;
    
-   
-//   @FXML private Button importButton; 
-//   @FXML private Button editButton;
-//   @FXML private Button back;
-//    
-//   @FXML private Button editMarks;    
-//   @FXML private TextField fileName;
-//   @FXML private TextField studentNumber;
-//   @FXML private TextField testName;   
-//   @FXML private TextField testMark;
-   
+   @FXML Label welcome;
         
      //HOME
      @FXML   
      public void handleSignOut(ActionEvent event) throws IOException{
-        
+        UI.EditCourseController.course =null;
          Parent home_parent = FXMLLoader.load(getClass().getResource("Login.fxml"));
          Scene home_scene = new Scene(home_parent);
          Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //current stage
@@ -79,6 +68,7 @@ public class convenorController implements Initializable {
     }
     @FXML   
      public void handleCourse(ActionEvent event) throws IOException, SQLException{
+        UI.EditCourseController.course =null; 
         Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96");
         Statement myStatement = myConn.createStatement();
         String findCourse = "SELECT * FROM users.courses WHERE convenorname = '"+CurrentUser.getUserName()+"'";
@@ -93,7 +83,7 @@ public class convenorController implements Initializable {
      
      @FXML   
      public void handleViewAll(ActionEvent event) throws IOException{
-        
+        UI.EditCourseController.course =null;
         content.getChildren().clear();
         content.getChildren().add(FXMLLoader.load(getClass().getResource("viewStudents.fxml")));
 
@@ -101,7 +91,7 @@ public class convenorController implements Initializable {
      
      @FXML   
      public void handleCourses(ActionEvent event) throws IOException{
-        
+        UI.EditCourseController.course =null;
         content.getChildren().clear();
         content.getChildren().add(FXMLLoader.load(getClass().getResource("viewCourses.fxml")));
          
@@ -109,26 +99,23 @@ public class convenorController implements Initializable {
      
      @FXML   
      public void handleMarks(ActionEvent event) throws IOException{
-        
+        UI.EditCourseController.course =null;
         content.getChildren().clear();
-        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarks.fxml")));
+        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarksT.fxml")));
         
          
      }
      
-    //OPTIONS
-    @FXML
-    public void handleEdit(ActionEvent event) throws IOException{
-       
-        OptionsContent.getChildren().clear();
-        OptionsContent.getChildren().add(FXMLLoader.load(getClass().getResource("convenor_EditMarks.fxml")));
-        
-    }
+//    //OPTIONS
+//    @FXML
+//    public void handleEdit(ActionEvent event) throws IOException{
+//       
+//        OptionsContent.getChildren().clear();
+//        OptionsContent.getChildren().add(FXMLLoader.load(getClass().getResource("convenor_EditMarks.fxml")));
+//        
+//    }
          
-   //HANDLE MARKS
   
-    
-    
     /**
      * Initializes the controller class.
      */
@@ -137,7 +124,7 @@ public class convenorController implements Initializable {
         // TODO
         //load logo
         System.out.println(CurrentUser.getUserName());
-        //welcome.setText("Welcome "+CurrentUser.getUserName());
+        welcome.setText("Welcome:\n"+CurrentUser.getUserName()+"\n(Convenor)");
         File file = new File("logo.gif");
         Image image = new Image(file.toURI().toString());
         logo.setImage(image);

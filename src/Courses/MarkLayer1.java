@@ -48,7 +48,7 @@ public class MarkLayer1 {
     }
     
     public String toString(){
-        return stunum;
+        return stunum+","+coursename;
     }
     
     

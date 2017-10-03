@@ -42,14 +42,14 @@ public class EditCourseController implements Initializable {
    
     @FXML
     public void handleImportMarks() throws IOException, FileNotFoundException, SQLException{
-        Users.Convenor.importMarks(course, fileName.getText(), assName.getText());
+        Users.Convenor.importMarks(course, fileName.getText(), assName.getText().toLowerCase());
         fileName.clear();
         assName.clear();
                
     }
     @FXML
     public void handleEditMark() throws SQLException{
-        Users.Convenor.editMarks(course, studentNumber.getText(), testName.getText(), testMark.getText());
+        Users.Convenor.editMarks(course, studentNumber.getText(), testName.getText().toLowerCase(), testMark.getText());
         studentNumber.clear();
         testName.clear();
         testMark.clear();
@@ -69,7 +69,6 @@ public class EditCourseController implements Initializable {
         //convenor
         
         
-        //System.out.println(course);
     }    
     
 }

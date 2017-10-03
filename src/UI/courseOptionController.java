@@ -27,7 +27,7 @@ public class courseOptionController implements Initializable {
     
     @FXML private StackPane OptionsContent;
     @FXML private Button editMarks; 
-    @FXML private Button editCourse; 
+    @FXML private Button markoverview; 
     @FXML private Button viewStudents; 
     @FXML private Button viewMarks; 
     @FXML private Button courseDetails; 
@@ -57,19 +57,13 @@ public class courseOptionController implements Initializable {
         OptionsContent.getChildren().add(FXMLLoader.load(getClass().getResource("viewStudents.fxml")));
         
      }
-    @FXML
-    public void handleEditMarks(ActionEvent event) throws IOException{
-       
-        OptionsContent.getChildren().clear();
-        OptionsContent.getChildren().add(FXMLLoader.load(getClass().getResource("")));
-        
-     }
+   
     
      @FXML
-    public void handleEditCourse(ActionEvent event) throws IOException{
+    public void handleOverview(ActionEvent event) throws IOException{
        
         OptionsContent.getChildren().clear();
-        OptionsContent.getChildren().add(FXMLLoader.load(getClass().getResource("")));
+        OptionsContent.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarksT.fxml")));
         
      }
     

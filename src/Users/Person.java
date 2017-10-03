@@ -5,12 +5,12 @@ public class Person {
     private String username;
     private String first;
     private String last;
-    private String email; 
+    //private String email; 
     
-    public Person(String u,String f, String l,  String e){
+    public Person(String u,String f, String l){
         
         username=u;
-        email =e;
+       // email =e;
         first=f;
         last =l;
        
@@ -28,8 +28,6 @@ public class Person {
         return last;
     }
 
-    public String getEmail() {
-        return email;
-    }
+   
     
 }

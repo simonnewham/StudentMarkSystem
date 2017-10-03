@@ -59,7 +59,7 @@ public class Lecturer_viewController implements Initializable {
    public void handleViewMarks(ActionEvent event) throws IOException{
        
         content.getChildren().clear();
-        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarks.fxml")));
+        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarksT.fxml")));
 
    }
    
@@ -85,7 +85,7 @@ public class Lecturer_viewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         System.out.println(CurrentUser.getUserName());
-        welcome.setText("Welcome "+CurrentUser.getUserName());
+        welcome.setText("Welcome \n"+CurrentUser.getUserName());
         File file = new File("logo.gif");
         Image image = new Image(file.toURI().toString());
         logo.setImage(image);

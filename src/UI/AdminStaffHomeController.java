@@ -6,6 +6,7 @@
 package UI;
 
 import Courses.CourseClicked;
+import Users.CurrentUser;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -18,6 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
@@ -37,6 +39,7 @@ public class AdminStaffHomeController implements Initializable {
    @FXML Button viewCourses;
    @FXML Button newCourse;
    @FXML Button viewMarks;
+   @FXML Label welcome;
    
    @FXML
    public void handleSignOut(ActionEvent event) throws IOException{
@@ -76,7 +79,7 @@ public class AdminStaffHomeController implements Initializable {
    public void hanldeMarks()throws IOException{
        CourseClicked.Clear();
        content.getChildren().clear();
-       content.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarks.fxml")));
+       content.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarksT.fxml")));
        
    }
     /**
@@ -86,9 +89,11 @@ public class AdminStaffHomeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
           //load logo
+          
         File file = new File("logo.gif");
         Image image = new Image(file.toURI().toString());
         logo.setImage(image);
+        welcome.setText("Welcome:\n"+CurrentUser.getUserName()+"\n(Admin Staff)");
     }    
     
 }

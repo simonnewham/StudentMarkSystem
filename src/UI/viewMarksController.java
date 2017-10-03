@@ -6,6 +6,7 @@
 package UI;
 
 import Courses.CourseClicked;
+import Courses.StudentMarkClick;
 import Users.CurrentUser;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -27,12 +28,14 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 
 /**
@@ -48,6 +51,9 @@ public class viewMarksController implements Initializable {
     @FXML TextField SN;
     @FXML TextField CC;
     
+    @FXML Button back;
+    @FXML StackPane content;
+    
     @FXML TextField file;
     @FXML Button export;
     @FXML Label msg;
@@ -56,24 +62,40 @@ public class viewMarksController implements Initializable {
             
      );
     
+    @FXML public void goBack() throws FileNotFoundException, IOException, SQLException{
+        
+        StudentMarkClick.setBack(true);
+        content.getChildren().clear();
+        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarksT.fxml")));   
+    }
+    
     @FXML
     public void getStudent() throws FileNotFoundException, IOException, SQLException{
-        
-        
+       
         String search = SN.getText();
+        ArrayList<String> courses = new ArrayList<>();
+        table.getColumns().clear();
         
         if(!search.equals("")){
-            //data.clear();
+            data.clear();
             Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
-             Statement myStatement = myConn.createStatement();
-             ResultSet rs = myStatement.executeQuery("SELECT * FROM users.marks \n"
-                                               + "WHERE users.marks.studentname = '"+search.trim()+"'");
+            Statement myStatement = myConn.createStatement();
+            ResultSet rs = myStatement.executeQuery("SELECT users.participants.student_id, users.participants.courses FROM users.participants\n" +
+                                                  "WHERE users.participants.student_id = '"+search.toUpperCase()+"'");
+            while(rs.next()){
+                courses.add(rs.getString("courses"));
+                
+            }
+            for(int i=0;i<courses.size(); i++){
+                 String table1 = courses.get(i).toLowerCase()+"_marks";
+                 ResultSet rs1 = myStatement.executeQuery("SELECT * FROM users."+table1+" WHERE studentname='"+search.toUpperCase()+"'");
             
-             this.getData_and_Set(rs);
+                    this.getData_and_Set(rs1);
+            }
              myConn.close();
             }
         else{
-            this.getMarks();
+            //this.getMarks();
         }
         SN.clear();
      }
@@ -81,20 +103,23 @@ public class viewMarksController implements Initializable {
     @FXML
     public void getCourse() throws FileNotFoundException, IOException, SQLException{
         
+        table.getColumns().clear();
         String course = CC.getText();
-        
+        String table1 = course.toLowerCase()+"_marks";
+        System.out.println(table);
+         
          if(!course.equals("")){
-            //data.clear();
+            data.clear();
             Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
              Statement myStatement = myConn.createStatement();
-             ResultSet rs = myStatement.executeQuery("SELECT  FROM users.marks \n"
-                                               + "WHERE users.marks.coursename = '"+course.trim()+"'");
+             ResultSet rs = myStatement.executeQuery("SELECT * FROM users."+table1+"");
+                                              
             
              this.getData_and_Set(rs);
              myConn.close();
             }
         else{
-            this.getMarks();
+           // this.getMarks();
         }
          CC.clear();
      }
@@ -102,9 +127,9 @@ public class viewMarksController implements Initializable {
     @FXML 
     public void getData_and_Set(ResultSet RS) throws FileNotFoundException, IOException, SQLException{
         
-        data.clear();
+        //data.clear();
         ResultSet rs = RS;
-        table.getColumns().clear();
+        //table.getColumns().clear();
         
         //add columns
          for(int i=0 ; i<rs.getMetaData().getColumnCount(); i++){
@@ -142,11 +167,14 @@ public class viewMarksController implements Initializable {
     }
    
     @FXML
-    public void getMarks() throws FileNotFoundException, IOException, SQLException{
+    public void getDetails() throws FileNotFoundException, IOException, SQLException{
+        
+        String sn = SN.getText();
+        String cc = CC.getText().toLowerCase()+"_marks";
         
         Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
         Statement myStatement = myConn.createStatement();
-        ResultSet rs = myStatement.executeQuery("SELECT * FROM users.marks");
+        ResultSet rs = myStatement.executeQuery("SELECT * FROM users."+cc+" WHERE "+cc+".studentname ='"+sn+"'");
         
         this.getData_and_Set(rs);
         myConn.close();
@@ -228,12 +256,16 @@ public class viewMarksController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // Only show back button if activated via viewMarksT
+        if(!StudentMarkClick.isClicked()){
+            back.setVisible(false);
+        }
         String user = CurrentUser.getUserName();
         String role = CurrentUser.getUserRole();
         
         System.out.println(role);
         
+        //only show marks for particular sudent
         if(role.equals("S")){
           
             SN.setText(user);
@@ -251,10 +283,51 @@ public class viewMarksController implements Initializable {
             }
 
         }
-        
+        //Only show detail for particular student only coming from viewMarkT table
+        else if(StudentMarkClick.isClicked()){
+            
+            SN.setText(StudentMarkClick.getStunum());
+            CC.setText(StudentMarkClick.getCourse());
+            SN.setVisible(false);
+            CC.setVisible(false);
+            searchSN.setVisible(false);
+            searchCC.setVisible(false);
+            
+            //StudentMarkClick.clearClicked();
+            //deactivate but store search to go back
+            StudentMarkClick.setClicked(false);
+            try{
+                this.getDetails();
+            }
+            catch (IOException | SQLException e) {
+                
+            }
+            
+        }
+        //show only for particular course
+        //AS
         else if(CourseClicked.getClicked()==true){ //admin clicked on it
                       
             CC.setText(CourseClicked.getCourse());
+            SN.setVisible(false);
+            CC.setVisible(false);
+            CC.setVisible(false);
+            searchSN.setVisible(false);
+            searchCC.setVisible(false);
+            
+            try{
+                this.getCourse();
+            }
+            catch (IOException | SQLException e) {
+
+            }
+            
+        }
+        //CC
+        else if (UI.EditCourseController.course !=null){
+     
+            CC.setText(UI.EditCourseController.course);
+            System.out.println(UI.EditCourseController.course);
             SN.setVisible(false);
             CC.setVisible(false);
             CC.setVisible(false);

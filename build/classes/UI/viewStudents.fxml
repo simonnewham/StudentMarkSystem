@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.viewStudentsController">
+<GridPane fx:id="grid" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.viewStudentsController">
   <columnConstraints>
-    <ColumnConstraints hgrow="ALWAYS" maxWidth="187.0" minWidth="150.0" prefWidth="187.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="900.0" minWidth="10.0" prefWidth="432.0" />
+    <ColumnConstraints hgrow="ALWAYS" maxWidth="180.0" minWidth="150.0" prefWidth="180.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="900.0" prefWidth="432.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="600.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="362.0" GridPane.columnIndex="1">
@@ -33,14 +33,13 @@
                   <TableColumn fx:id="first_name" prefWidth="75.0" text="First Name" />
                   <TableColumn fx:id="surname" prefWidth="75.0" text="Surname" />
                   <TableColumn fx:id="course" prefWidth="75.0" text="Course" />
-                  <TableColumn fx:id="email" prefWidth="75.0" text="Email" />
                </columns>
             </TableView>
          </children>
       </StackPane>
       <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="300.0" prefWidth="100.0">
          <children>
-            <Label text="Search: ">
+            <Label>
                <font>
                   <Font size="17.0" />
                </font>
@@ -50,7 +49,7 @@
                   <Insets top="15.0" />
                </VBox.margin>
             </TextField>
-            <Button fx:id="searchSN" mnemonicParsing="false" onAction="#getStudent" style="-fx-background-color: #0E7790;" text="Search" textFill="WHITE">
+            <Button fx:id="searchSN" mnemonicParsing="false" onAction="#getStudent" prefHeight="27.0" prefWidth="199.0" style="-fx-background-color: #0E7790;" text="Search" textFill="WHITE">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -63,18 +62,18 @@
                   <Insets bottom="10.0" top="30.0" />
                </VBox.margin>
             </TextField>
-            <Button fx:id="searchCC" mnemonicParsing="false" onAction="#getCourse" style="-fx-background-color: #0E7790;" text="Search" textFill="WHITE" />
+            <Button fx:id="searchCC" mnemonicParsing="false" onAction="#getCourse" prefHeight="27.0" prefWidth="193.0" style="-fx-background-color: #0E7790;" text="Search" textFill="WHITE" />
             <TextField fx:id="file" promptText="Filename">
                <VBox.margin>
                   <Insets top="60.0" />
                </VBox.margin>
             </TextField>
-            <Button fx:id="export" mnemonicParsing="false" onAction="#handleExport" style="-fx-background-color: #0E7790;" text="Export to CSV" textFill="WHITE">
+            <Button fx:id="export" mnemonicParsing="false" onAction="#handleExport" prefHeight="27.0" prefWidth="197.0" style="-fx-background-color: #0E7790;" text="Export to CSV" textFill="WHITE">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
             </Button>
-            <Label fx:id="msg" text="Label" textFill="#0e7790">
+            <Label fx:id="msg" textFill="#0e7790">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>

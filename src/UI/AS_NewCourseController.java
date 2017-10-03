@@ -51,7 +51,6 @@ public class AS_NewCourseController implements Initializable {
     @FXML   
      public void handleAddCourse(ActionEvent event) throws IOException, SQLException{
          
-         
          String changeRole = "UPDATE `users`.`users_login` SET `role`='CC' WHERE `user_id`='" + convenorName + "'";
          Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96");
          Statement myStatement = myConn.createStatement();

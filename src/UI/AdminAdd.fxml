@@ -129,6 +129,7 @@
                   <Button mnemonicParsing="false" onAction="#handleimportUser" text="Import User List" />
                </children>
             </StackPane>
+            <Label fx:id="msg" GridPane.columnIndex="3" GridPane.rowIndex="5" />
          </children>
          <StackPane.margin>
             <Insets left="5.0" right="5.0" />
