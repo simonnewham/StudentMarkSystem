@@ -83,6 +83,9 @@ public class courseOptionController implements Initializable {
              //only edit this
              title.setText(CourseClicked.getCourse());
         }
+        else if (CurrentUser.getUserRole().equals("CC")){
+             title.setText(UI.EditCourseController.course);
+        }
     }    
     
 }

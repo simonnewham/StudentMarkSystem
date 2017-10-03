@@ -23,7 +23,8 @@ import javafx.scene.control.TextField;
  * @author simonnewham
  */
 public class EditCourseController implements Initializable {
-    String course;
+    
+   public static String course;
             
    @FXML private Button importButton; 
    @FXML private Button editButton;
@@ -34,6 +35,10 @@ public class EditCourseController implements Initializable {
    @FXML private TextField studentNumber;
    @FXML private TextField testName;   
    @FXML private TextField testMark;
+   
+   public static void setCourse(String coursecode){
+       course = coursecode;
+   }
    
     @FXML
     public void handleImportMarks() throws IOException, FileNotFoundException, SQLException{
@@ -62,9 +67,8 @@ public class EditCourseController implements Initializable {
         }
 
         //convenor
-        else{
-            course = "CSC3003S";
-        }
+        
+        
         //System.out.println(course);
     }    
     

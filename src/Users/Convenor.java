@@ -35,12 +35,13 @@ public class Convenor extends User{
     public static void importMarks(String course, String fileName, String assessName) throws FileNotFoundException, IOException, SQLException{
         
         String currentcourse = course;
+        String currentcourselower = currentcourse.toLowerCase();
         
         Scanner s = new Scanner(new File(fileName));
         
         Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
         Statement myStatement = myConn.createStatement();
-        String insertColumn =   "ALTER TABLE users.marks ADD "+ assessName +" INT";
+        String insertColumn =   "ALTER TABLE users." + currentcourselower + "_marks ADD "+ assessName +" INT";
                     
         myStatement.executeUpdate(insertColumn);        
         while (s.hasNext()){
@@ -50,7 +51,7 @@ public class Convenor extends User{
             String testMarkString = lineParts[1];
             int testMark = Integer.parseInt(testMarkString);
             
-            String insertMark = "UPDATE users.marks SET " + assessName + "='" + testMarkString + "' WHERE studentname='" + studentName + "' and coursename ='"+currentcourse+"'";
+            String insertMark = "UPDATE users." + currentcourselower + "_marks SET " + assessName + "='" + testMarkString + "' WHERE studentname='" + studentName + "'";
             myStatement.executeUpdate(insertMark);    
         }
         myConn.close();
@@ -58,11 +59,13 @@ public class Convenor extends User{
     }
     
     public static void editMarks(String course,String studentName, String markInfo, String newMark) throws SQLException{
-        String currentcourse =course;
+        String currentcourse = course;
+        String currentcourselower = currentcourse.toLowerCase();
+        
         Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
         Statement myStatement = myConn.createStatement();
         
-        String editMark = "UPDATE users.marks SET " + markInfo + "='" + newMark + "' WHERE studentname='" + studentName + "' and coursename ='"+currentcourse+"'";
+        String editMark = "UPDATE users." + currentcourselower + "_marks SET " + markInfo + "='" + newMark + "' WHERE studentname='" + studentName + "'";
         myStatement.executeUpdate(editMark);
         myConn.close();
     }

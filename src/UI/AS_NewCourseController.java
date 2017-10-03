@@ -28,17 +28,19 @@ import javafx.scene.control.TextField;
 public class AS_NewCourseController implements Initializable {
 
     /**
-     * Initializes the controller class.
+     * Initializes the controller class
      */
     
+    public String coursecode;
     @FXML private TextField courseName;
     @FXML private TextField courseYear;
+     @FXML private TextField fileName;
     @FXML private Button addCourse;
     @FXML private MenuButton convenorButton;
-    @FXML private MenuButton lectureButton;
+    //@FXML private MenuButton lectureButton;
     
     public String convenorName;
-    public String lecturerName;
+    //public String lecturerName;
     
      
     @FXML   
@@ -49,11 +51,24 @@ public class AS_NewCourseController implements Initializable {
     @FXML   
      public void handleAddCourse(ActionEvent event) throws IOException, SQLException{
          
-         Users.AdminStaff.addCourse(courseName.getText(), courseYear.getText(),convenorName, lecturerName);
+         
+         String changeRole = "UPDATE `users`.`users_login` SET `role`='CC' WHERE `user_id`='" + convenorName + "'";
+         Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96");
+         Statement myStatement = myConn.createStatement();
+         myStatement.executeUpdate(changeRole);
+         myConn.close();
+         coursecode=courseName.getText();
+         Users.AdminStaff.addCourse(courseName.getText(), courseYear.getText(),convenorName);
          courseName.clear();
          courseYear.clear();
          convenorButton.setText("Select");
-         lectureButton.setText("Select");
+       //  lectureButton.setText("Select");
+     }
+     
+      @FXML   
+     public void handleAddStudents(ActionEvent event) throws IOException, SQLException{
+         Users.AdminStaff.importStudents(fileName.getText(), coursecode);
+         fileName.clear();
      }
      
       @FXML   
@@ -80,13 +95,15 @@ public class AS_NewCourseController implements Initializable {
                 convenorButton.setText(convenorName);
                 });
                 convenorButton.getItems().add(item);
-            }      
+            }
+            
+            
             myConn.close();
             
         } catch (SQLException ex) {
             Logger.getLogger(AS_NewCourseController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        try {
+        /*try {
             lectureButton.setText("Select");
             lectureButton.getItems().clear();
             
@@ -110,7 +127,7 @@ public class AS_NewCourseController implements Initializable {
             
         } catch (SQLException ex) {
             Logger.getLogger(AS_NewCourseController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         
     }    
     

@@ -57,7 +57,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <MenuButton fx:id="lectureButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="142.0">
+            <MenuButton mnemonicParsing="false" prefHeight="37.0" prefWidth="142.0" text="Select">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -88,8 +88,8 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Label>
-            <TextField promptText="Import Filename" />
-            <Button mnemonicParsing="false" text="Import Students">
+            <TextField fx:id="fileName" promptText="Import Filename" />
+            <Button mnemonicParsing="false" onAction="#handleAddStudents" text="Import Students">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>

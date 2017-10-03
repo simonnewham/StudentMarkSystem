@@ -10,7 +10,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -74,8 +78,14 @@ public class convenorController implements Initializable {
     
     }
     @FXML   
-     public void handleCourse(ActionEvent event) throws IOException{
-        
+     public void handleCourse(ActionEvent event) throws IOException, SQLException{
+        Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96");
+        Statement myStatement = myConn.createStatement();
+        String findCourse = "SELECT * FROM users.courses WHERE convenorname = '"+CurrentUser.getUserName()+"'";
+        ResultSet myRS = myStatement.executeQuery(findCourse);
+        while (myRS.next()){
+        UI.EditCourseController.setCourse(myRS.getString("course_id"));
+        }
         content.getChildren().clear();
         content.getChildren().add(FXMLLoader.load(getClass().getResource("courseOption.fxml")));
          
