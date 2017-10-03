@@ -87,7 +87,7 @@ public class viewMarksController implements Initializable {
             //data.clear();
             Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
              Statement myStatement = myConn.createStatement();
-             ResultSet rs = myStatement.executeQuery("SELECT * FROM users.marks \n"
+             ResultSet rs = myStatement.executeQuery("SELECT  FROM users.marks \n"
                                                + "WHERE users.marks.coursename = '"+course.trim()+"'");
             
              this.getData_and_Set(rs);

@@ -68,7 +68,7 @@ public class AS_NewCourseController implements Initializable {
             convenorButton.setText("Select");
             convenorButton.getItems().clear();
             
-            String selectConvenors = "SELECT * FROM users.users_login WHERE role = 'CC'";
+            String selectConvenors = "SELECT * FROM users.users_login WHERE role = 'L'";
             Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96");
             Statement myStatement = myConn.createStatement();
             ResultSet myRSC = myStatement.executeQuery(selectConvenors);

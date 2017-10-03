@@ -55,7 +55,7 @@ public class Student_viewController implements Initializable {
      public void handleViewMarks(ActionEvent event) throws IOException{
         
         content.getChildren().clear();
-        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarks.fxml")));
+        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarksT.fxml")));
         
     
     }
