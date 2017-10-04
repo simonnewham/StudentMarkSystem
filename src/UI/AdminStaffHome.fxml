@@ -25,7 +25,7 @@
          <children>
             <ImageView fx:id="logo" fitHeight="267.0" fitWidth="263.0" pickOnBounds="true" preserveRatio="true" />
          </children></StackPane>
-      <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="268.0" prefHeight="430.0" prefWidth="268.0" style="-fx-background-color: #C5C8CA;" GridPane.rowIndex="1">
+      <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="268.0" prefHeight="430.0" prefWidth="268.0" style="-fx-background-color: #787878;" GridPane.rowIndex="1">
          <children>
             <Button fx:id="newCourse" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#hanldeNewCourse" prefHeight="27.0" prefWidth="140.0" style="-fx-background-color: white;" text="New Course" textAlignment="CENTER">
                <VBox.margin>

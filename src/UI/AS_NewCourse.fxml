@@ -30,6 +30,11 @@
             </Label>
             <TextField fx:id="courseName" promptText="Course Code" />
             <TextField fx:id="courseYear" promptText="Year" />
+            <Label fx:id="msg">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Label>
          </children>
       </VBox>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
@@ -60,23 +65,23 @@
       </VBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <Label text="Lecturers">
+            <Label text="Lecturers" visible="false">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <MenuButton mnemonicParsing="false" prefHeight="37.0" prefWidth="142.0" text="Select">
+            <MenuButton mnemonicParsing="false" prefHeight="37.0" prefWidth="142.0" text="Select" visible="false">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
               </items>
             </MenuButton>
-            <Button mnemonicParsing="false" text="Add Lecturer">
+            <Button mnemonicParsing="false" text="Add Lecturer" visible="false">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <Label text="Lecturer Name Added or ERROR" />
+            <Label text="Lecturer Name Added or ERROR" visible="false" />
          </children>
       </VBox>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
@@ -92,7 +97,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <Label text="Success or ERROR" />
+            <Label fx:id="msg2" text="Success or ERROR" />
          </children>
       </VBox>
    </children>

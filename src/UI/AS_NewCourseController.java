@@ -11,13 +11,12 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 
 /**
@@ -30,7 +29,8 @@ public class AS_NewCourseController implements Initializable {
     /**
      * Initializes the controller class
      */
-    
+    @FXML Label msg;
+    @FXML Label msg2;
     public String coursecode;
     @FXML private TextField courseName;
     @FXML private TextField courseYear;
@@ -62,12 +62,15 @@ public class AS_NewCourseController implements Initializable {
          courseYear.clear();
          convenorButton.setText("Select");
        //  lectureButton.setText("Select");
+        msg.setText(coursecode+" Added");
      }
      
       @FXML   
      public void handleAddStudents(ActionEvent event) throws IOException, SQLException{
          Users.AdminStaff.importStudents(fileName.getText(), coursecode);
          fileName.clear();
+         //coursecode=null;
+         msg2.setText(fileName.getText()+ "Imported Successfully");
      }
      
       @FXML   

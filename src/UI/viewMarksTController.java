@@ -157,12 +157,27 @@ public class viewMarksTController implements Initializable {
                 }
                 
                 System.out.println("Info in "+row );
-  
+                
+                //work out if exam is included
+                //if it is then we need to not include the last mark in the class mark
+                int reduce=0;
                 //work out class mark
+                try{
+                    if(rs.getString("exam")!=null){
+                      System.out.println("EXAM INCLUDED");
+                      reduce =1;
+                    }
+                }
+                catch (SQLException e){
+                    System.out.println("NO EXAM YET");
+                    
+                }
+                int upto=row.size()-reduce;
                 int total=0;
                 int tests=0;
                 int avg=0;
-                for(int j=1; j<row.size(); j++){
+                for(int j=1; j<upto; j++){
+                    
                     String mark = row.get(j).toString();
                     
                     total = total+ Integer.parseInt(mark);
@@ -186,8 +201,7 @@ public class viewMarksTController implements Initializable {
                     finalM= String.valueOf((avg+exam)/2);
                     examM = rs.getString("exam");
                  }
-                   
-                    
+                      
                 }
                 catch (SQLException e){
                     System.out.println("NO EXAM YET");
