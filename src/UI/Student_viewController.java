@@ -60,13 +60,7 @@ public class Student_viewController implements Initializable {
     
     }
      
-    @FXML   
-    public void handleViewCourses(ActionEvent event) throws IOException{
-        
-        content.getChildren().clear();
-        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewCourses.fxml")));
     
-    }
     
     /**
      * Initializes the controller class.

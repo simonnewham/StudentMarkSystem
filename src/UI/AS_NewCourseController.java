@@ -51,9 +51,10 @@ public class AS_NewCourseController implements Initializable {
      
     @FXML   
      public void handleAddCourse(ActionEvent event) throws IOException, SQLException{
-         errmsg=coursecode+" Added";
+        
          
          coursecode=courseName.getText();
+         errmsg=coursecode+" Added";
          Users.AdminStaff.addCourse(courseName.getText(), courseYear.getText(),convenorName);
          
          String changeRole = "UPDATE `users`.`users_login` SET `role`='CC' WHERE `user_id`='" + convenorName + "'";

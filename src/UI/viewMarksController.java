@@ -71,7 +71,9 @@ public class viewMarksController implements Initializable {
     
     @FXML
     public void getStudent() throws FileNotFoundException, IOException, SQLException{
-       
+        
+        data.clear();
+        table.getColumns().clear();
         String search = SN.getText();
         ArrayList<String> courses = new ArrayList<>();
         table.getColumns().clear();
@@ -102,7 +104,8 @@ public class viewMarksController implements Initializable {
     
     @FXML
     public void getCourse() throws FileNotFoundException, IOException, SQLException{
-        
+        data.clear();
+        table.getColumns().clear();
         table.getColumns().clear();
         String course = CC.getText();
         String table1 = course.toLowerCase()+"_marks";
@@ -257,30 +260,48 @@ public class viewMarksController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Only show back button if activated via viewMarksT
-        if(!StudentMarkClick.isClicked()){
-            back.setVisible(false);
-        }
-        String user = CurrentUser.getUserName();
+        
+         String user = CurrentUser.getUserName();
         String role = CurrentUser.getUserRole();
         
         System.out.println(role);
         
+        if(!StudentMarkClick.isClicked()){
+            back.setVisible(false);
+        }
+ 
         //only show marks for particular sudent
-        if(role.equals("S")){
+        if(role.equals("S") &&StudentMarkClick.isClicked()){
           
-            SN.setText(user);
+            SN.setText(StudentMarkClick.getStunum());
+            CC.setText(StudentMarkClick.getCourse());
             SN.setVisible(false);
-            CC.setVisible(false);
             CC.setVisible(false);
             searchSN.setVisible(false);
             searchCC.setVisible(false);
-
+            
+            //StudentMarkClick.clearClicked();
+            //deactivate but store search to go back
+            StudentMarkClick.setClicked(false);
             try{
-                this.getStudent();
+                this.getDetails();
             }
             catch (IOException | SQLException e) {
                 
             }
+//            SN.setText(user);
+//            SN.setVisible(false);
+//            CC.setVisible(false);
+//            CC.setVisible(false);
+//            searchSN.setVisible(false);
+//            searchCC.setVisible(false);
+//
+//            try{
+//                this.getStudent();
+//            }
+//            catch (IOException | SQLException e) {
+//                
+//            }
 
         }
         //Only show detail for particular student only coming from viewMarkT table

@@ -176,6 +176,7 @@ public class viewMarksTController implements Initializable {
                 int total=0;
                 int tests=0;
                 int avg=0;
+                
                 for(int j=1; j<upto; j++){
                     
                     String mark = row.get(j).toString();
@@ -185,6 +186,7 @@ public class viewMarksTController implements Initializable {
                     tests=j;
              
                 }
+                
                 if (tests !=0){
                     avg = total/tests;
                 }
@@ -199,7 +201,7 @@ public class viewMarksTController implements Initializable {
                     examM = rs.getString("exam");
                     int exam = Integer.parseInt(rs.getString("exam"));  
                     finalM= String.valueOf((avg+exam)/2);
-                    examM = rs.getString("exam");
+                    
                  }
                       
                 }

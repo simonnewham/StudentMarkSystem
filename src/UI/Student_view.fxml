@@ -39,16 +39,6 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="viewDetails" alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="119.0" style="-fx-background-color: white;" text="View Details">
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="viewCourses" mnemonicParsing="false" onAction="#handleViewCourses" prefHeight="27.0" prefWidth="119.0" style="-fx-background-color: white;" text="View Courses">
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin>
-            </Button>
          </children>
       </VBox>
       <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #3E90AD;">
