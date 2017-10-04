@@ -48,7 +48,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <Button fx:id="searchSN" mnemonicParsing="false" onAction="#getStudent" prefHeight="27.0" prefWidth="165.0" style="-fx-background-color: #0E7790;" text="Search" textFill="WHITE">
+                  <Button fx:id="searchSN" mnemonicParsing="false" onAction="#getStudent" prefHeight="27.0" prefWidth="142.0" style="-fx-background-color: #0E7790;" text="Search" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -61,13 +61,13 @@
                         <Insets bottom="10.0" top="30.0" />
                      </VBox.margin>
                   </TextField>
-                  <Button fx:id="searchCC" mnemonicParsing="false" onAction="#getCourse" prefHeight="27.0" prefWidth="173.0" style="-fx-background-color: #0E7790;" text="Search" textFill="#fffbfb" />
+                  <Button fx:id="searchCC" mnemonicParsing="false" onAction="#getCourse" prefHeight="27.0" prefWidth="142.0" style="-fx-background-color: #0E7790;" text="Search" textFill="#fffbfb" />
                   <TextField fx:id="file" prefHeight="25.0" prefWidth="150.0" promptText="Filename">
                      <VBox.margin>
                         <Insets top="60.0" />
                      </VBox.margin>
                   </TextField>
-                  <Button fx:id="export" mnemonicParsing="false" onAction="#handleExport" prefHeight="27.0" prefWidth="177.0" style="-fx-background-color: #0E7790;" text="Export to CSV" textFill="WHITE">
+                  <Button fx:id="export" mnemonicParsing="false" onAction="#handleExport" prefHeight="27.0" prefWidth="142.0" style="-fx-background-color: #0E7790;" text="Export to CSV" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>

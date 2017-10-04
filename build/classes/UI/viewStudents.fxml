@@ -15,8 +15,8 @@
 
 <GridPane fx:id="grid" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.viewStudentsController">
   <columnConstraints>
-    <ColumnConstraints hgrow="ALWAYS" maxWidth="180.0" minWidth="150.0" prefWidth="180.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="900.0" prefWidth="432.0" />
+    <ColumnConstraints hgrow="ALWAYS" maxWidth="180.0" minWidth="150.0" prefWidth="160.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="900.0" minWidth="443.0" prefWidth="459.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="600.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -49,7 +49,7 @@
                   <Insets top="15.0" />
                </VBox.margin>
             </TextField>
-            <Button fx:id="searchSN" mnemonicParsing="false" onAction="#getStudent" prefHeight="27.0" prefWidth="199.0" style="-fx-background-color: #0E7790;" text="Search" textFill="WHITE">
+            <Button fx:id="searchSN" mnemonicParsing="false" onAction="#getStudent" prefHeight="27.0" prefWidth="146.0" style="-fx-background-color: #0E7790;" text="Search" textFill="WHITE">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -62,13 +62,13 @@
                   <Insets bottom="10.0" top="30.0" />
                </VBox.margin>
             </TextField>
-            <Button fx:id="searchCC" mnemonicParsing="false" onAction="#getCourse" prefHeight="27.0" prefWidth="193.0" style="-fx-background-color: #0E7790;" text="Search" textFill="WHITE" />
+            <Button fx:id="searchCC" mnemonicParsing="false" onAction="#getCourse" prefHeight="27.0" prefWidth="147.0" style="-fx-background-color: #0E7790;" text="Search" textFill="WHITE" />
             <TextField fx:id="file" promptText="Filename">
                <VBox.margin>
                   <Insets top="60.0" />
                </VBox.margin>
             </TextField>
-            <Button fx:id="export" mnemonicParsing="false" onAction="#handleExport" prefHeight="27.0" prefWidth="197.0" style="-fx-background-color: #0E7790;" text="Export to CSV" textFill="WHITE">
+            <Button fx:id="export" mnemonicParsing="false" onAction="#handleExport" prefHeight="27.0" prefWidth="146.0" style="-fx-background-color: #0E7790;" text="Export to CSV" textFill="WHITE">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>

@@ -97,7 +97,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <Label fx:id="msg2" text="Success or ERROR" />
+            <Label fx:id="msg2" />
          </children>
       </VBox>
    </children>

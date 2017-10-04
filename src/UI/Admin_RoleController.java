@@ -23,19 +23,21 @@ import javafx.scene.control.TextField;
  */
 public class Admin_RoleController implements Initializable {
 
-    @FXML private TextField firstname;
-    @FXML private TextField surname;
-    @FXML private TextField username;
-    @FXML private TextField removeUsername;
-    @FXML private TextField password;
-    @FXML private TextField confirmPassword;
-    @FXML private TextField fileName;
-    @FXML private MenuButton roleButton;
+    @FXML  TextField firstname;
+    @FXML  TextField surname;
+    @FXML  TextField username;
+    @FXML  TextField removeUsername;
+    @FXML  TextField password;
+    @FXML  TextField confirmPassword;
+    @FXML  TextField fileName;
+    @FXML  MenuButton roleButton;
     public String role;
-    @FXML Label msg;
+    @FXML  Label msg;
+    public static String errmsg="";
     
     @FXML
     public void handleAddUser() throws SQLException{
+        errmsg="Import successfull";
         if (password.getText().equals(confirmPassword.getText())){
         Users.Admin.handleAddUser(firstname.getText(), surname.getText(), username.getText(), password.getText(), role);
         }
@@ -46,7 +48,10 @@ public class Admin_RoleController implements Initializable {
         password.clear();
         confirmPassword.clear();
         roleButton.setText("Role");
+        
+        msg.setText(errmsg);
     }
+    
     
     @FXML
     public void handleRemoveUser() throws SQLException{
@@ -56,9 +61,11 @@ public class Admin_RoleController implements Initializable {
     
     @FXML
     public void handleimportUser() throws SQLException, FileNotFoundException{
+        errmsg="Import successfull";
         Users.Admin.handleImportUser(fileName.getText());
         fileName.clear();
-        msg.setText("Import successfull");
+        msg.setText(errmsg);
+        
     }
     
     @FXML
@@ -85,12 +92,12 @@ public class Admin_RoleController implements Initializable {
             });
         roleButton.getItems().add(itemAS);
         
-        MenuItem itemCC = new MenuItem("CourseConvenor");
-        itemCC.setOnAction(a->{
-            role = "CC";
-            roleButton.setText("Course Convenor");
-            });
-        roleButton.getItems().add(itemCC);
+//        MenuItem itemCC = new MenuItem("CourseConvenor");
+//        itemCC.setOnAction(a->{
+//            role = "CC";
+//            roleButton.setText("Course Convenor");
+//            });
+//        roleButton.getItems().add(itemCC);
         
         MenuItem itemL = new MenuItem("Lecturer");
         itemL.setOnAction(a->{
@@ -106,6 +113,11 @@ public class Admin_RoleController implements Initializable {
             });
         roleButton.getItems().add(itemS);
     
-    }    
+    }
+    
+    @FXML public static void Error(){
+        
+       errmsg ="Error Occured! Some users may already be in DB";
+    }
     
 }

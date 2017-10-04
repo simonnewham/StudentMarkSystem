@@ -31,6 +31,7 @@ public class AS_NewCourseController implements Initializable {
      */
     @FXML Label msg;
     @FXML Label msg2;
+    
     public String coursecode;
     @FXML private TextField courseName;
     @FXML private TextField courseYear;
@@ -40,7 +41,7 @@ public class AS_NewCourseController implements Initializable {
     //@FXML private MenuButton lectureButton;
     
     public String convenorName;
-    //public String lecturerName;
+    public static String errmsg="";
     
      
     @FXML   
@@ -50,19 +51,26 @@ public class AS_NewCourseController implements Initializable {
      
     @FXML   
      public void handleAddCourse(ActionEvent event) throws IOException, SQLException{
+         errmsg=coursecode+" Added";
+         
+         coursecode=courseName.getText();
+         Users.AdminStaff.addCourse(courseName.getText(), courseYear.getText(),convenorName);
          
          String changeRole = "UPDATE `users`.`users_login` SET `role`='CC' WHERE `user_id`='" + convenorName + "'";
          Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96");
          Statement myStatement = myConn.createStatement();
-         myStatement.executeUpdate(changeRole);
+         //if no error
+         if(errmsg.equals(coursecode+" Added")){
+             myStatement.executeUpdate(changeRole);
+         }
+         
          myConn.close();
-         coursecode=courseName.getText();
-         Users.AdminStaff.addCourse(courseName.getText(), courseYear.getText(),convenorName);
+        
          courseName.clear();
          courseYear.clear();
          convenorButton.setText("Select");
        //  lectureButton.setText("Select");
-        msg.setText(coursecode+" Added");
+        msg.setText(errmsg);
      }
      
       @FXML   
@@ -70,7 +78,7 @@ public class AS_NewCourseController implements Initializable {
          Users.AdminStaff.importStudents(fileName.getText(), coursecode);
          fileName.clear();
          //coursecode=null;
-         msg2.setText(fileName.getText()+ "Imported Successfully");
+        
      }
      
       @FXML   
@@ -132,6 +140,10 @@ public class AS_NewCourseController implements Initializable {
         }*/
         
     }    
+    @FXML
+    public static void Error(String err){
+        errmsg=err;
+    }
     
 }
 

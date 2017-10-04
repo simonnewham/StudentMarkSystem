@@ -109,9 +109,9 @@
                   <PasswordField fx:id="password" />
                </children>
             </StackPane>
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4">
                <children>
-                  <Label text="Users Add or ERROR" />
+                  <Label fx:id="msg" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="51.0" />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2">
@@ -129,7 +129,6 @@
                   <Button mnemonicParsing="false" onAction="#handleimportUser" text="Import User List" />
                </children>
             </StackPane>
-            <Label fx:id="msg" GridPane.columnIndex="3" GridPane.rowIndex="5" />
          </children>
          <StackPane.margin>
             <Insets left="5.0" right="5.0" />
