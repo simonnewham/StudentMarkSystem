@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Controller responsible for handling events on the admin's home page
  */
 package UI;
 
@@ -24,9 +22,9 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
+ * CAPSTONE CSC3003S
  *
- * @author simonnewham
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class AdminHomeController implements Initializable {
     
@@ -37,7 +35,7 @@ public class AdminHomeController implements Initializable {
     @FXML private Button viewUsers;
     @FXML private Button signout;
    
-     
+   /*Changes the stack pane to add users*/  
    @FXML
    public void addUser(ActionEvent event) throws IOException{
        
@@ -46,12 +44,7 @@ public class AdminHomeController implements Initializable {
 
    }
    
-   @FXML
-   public void handleAddUser(ActionEvent event) throws IOException{
-       
-
-   }
-   
+   /*Changes the stack pane to remove users*/
    @FXML
    public void deleteUser(ActionEvent event) throws IOException{
        
@@ -60,6 +53,7 @@ public class AdminHomeController implements Initializable {
 
    }
    
+   /*Changes the stack pane to view users*/
    @FXML
    public void handleviewUsers(ActionEvent event) throws IOException{
        
@@ -69,6 +63,8 @@ public class AdminHomeController implements Initializable {
 
    }
    
+   /*Changes the view back to the log in view.
+   Logs out the current user*/
    @FXML
    public void signOut(ActionEvent event) throws IOException{
        
@@ -80,7 +76,7 @@ public class AdminHomeController implements Initializable {
 
    }
     /**
-     * Initializes the controller class.
+     * Initializes the controller class by loading the background image.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

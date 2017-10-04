@@ -1,14 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Static Class used to determine what student was clicked on in the viewMarksT table in order to display the correct viewMarks
+ * table for that student. Used by viewMarksController to determine what marks to load.
  */
 package Courses;
 
 /**
- *Static Class used to determine what student was clicked on in the viewMarksT table in order to display the correct viewMarks
- * table for that student
- * @author simonnewham
+ * CAPSTONE 3003S
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class StudentMarkClick {
     
@@ -18,6 +16,9 @@ public class StudentMarkClick {
     static String lastclick;
     static boolean backclicked =false;
 
+    /*
+    
+    */
     public static void Activate(String sn, String cc, String lc){
         course=cc;
         stunum=sn;
@@ -50,11 +51,15 @@ public class StudentMarkClick {
     public static String getStunum() {
         return stunum;
     }
-
+    /*
+     * Method 
+    */
     public static void setClicked(boolean b) {
         clicked=b;
     }
-    
+    /*
+     * Method clears the class to make sure the table doesnt load the incorrect data when not accessed through the viewMarksT table
+    */
     public static void clearClicked(){
         clicked=false;
         course=null;

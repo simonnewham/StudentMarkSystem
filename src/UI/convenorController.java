@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Contoller responsible for handling events for the convenorHome framework
  */
 package UI;
 
@@ -30,32 +28,26 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
+ * CSC3003S CapStone
  *
- * @author simonnewham
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class convenorController implements Initializable {
 
-    
    @FXML private StackPane content;  
-   @FXML private StackPane OptionsContent;
    
    @FXML Button viewStudents;
    @FXML Button viewCourses;
    @FXML Button searchMarks;
    @FXML private Button course;
    @FXML private Button signout;
-    
    @FXML private StackPane EditContent;
-    
-  
    @FXML private StackPane EditView;
-  
    @FXML private ImageView logo;
-   
    @FXML Label welcome;
         
-     //HOME
+     
+    /*Signs the convenor out and changes the view back to the log in page*/
      @FXML   
      public void handleSignOut(ActionEvent event) throws IOException{
         UI.EditCourseController.course =null;
@@ -66,6 +58,8 @@ public class convenorController implements Initializable {
          app_stage.show();
     
     }
+     
+     /*Allows the conenor to import marks, edit them, and view marks and students from the course that the convenor is convening*/
     @FXML   
      public void handleCourse(ActionEvent event) throws IOException, SQLException{
         UI.EditCourseController.course =null; 
@@ -81,6 +75,7 @@ public class convenorController implements Initializable {
          
      } 
      
+     /*Changes the stack pane to view the students that exist in the database*/
      @FXML   
      public void handleViewAll(ActionEvent event) throws IOException{
         UI.EditCourseController.course =null;
@@ -89,6 +84,7 @@ public class convenorController implements Initializable {
 
      }
      
+     /*Changes the stack pane to view the courses that exist in the database*/
      @FXML   
      public void handleCourses(ActionEvent event) throws IOException{
         UI.EditCourseController.course =null;
@@ -97,6 +93,7 @@ public class convenorController implements Initializable {
          
      }
      
+     /*Changes the stack pane to view overview marks that exist in the database*/
      @FXML   
      public void handleMarks(ActionEvent event) throws IOException{
         UI.EditCourseController.course =null;
@@ -105,19 +102,9 @@ public class convenorController implements Initializable {
         
          
      }
-     
-//    //OPTIONS
-//    @FXML
-//    public void handleEdit(ActionEvent event) throws IOException{
-//       
-//        OptionsContent.getChildren().clear();
-//        OptionsContent.getChildren().add(FXMLLoader.load(getClass().getResource("convenor_EditMarks.fxml")));
-//        
-//    }
-         
-  
-    /**
-     * Initializes the controller class.
+      
+    /*
+     * Initializes the controller class by welcoming convenor and loading UCT logo.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

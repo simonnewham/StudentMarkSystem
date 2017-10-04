@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Class responsible for handling all actions taken by the admin staff role
  */
 package Users;
 
@@ -18,7 +16,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author simonnewham
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class AdminStaff extends User{
     
@@ -35,6 +33,9 @@ public class AdminStaff extends User{
         return all_courses;
     }
     
+    /*Adds and individual course to the database and changes the role of a lecturer to a convenor when a convenor
+    is assigned to the course.
+    Gives an error message if the course trying to be added already exists*/
    public static void addCourse(String courseName, String year, String convenor) throws SQLException{
         String courseNameUpper = courseName;
         String courseNameLower =  courseName.toLowerCase();
@@ -54,6 +55,9 @@ public class AdminStaff extends User{
         myConn.close();
     }
    
+   /*Reads through a .csv file and imports a list of students on the file.
+   The students are added to a participants table in the database and to the courses mark sheet of the course 
+   that has just been created.*/
    public static void importStudents(String fileName,String courseCode) throws SQLException, FileNotFoundException{
        String courseCodelower = courseCode.toLowerCase();
        Scanner s = new Scanner(new File(fileName));

@@ -1,14 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Class responsible for keeping track of the user currently logged on to the system
  */
 package Users;
 
 
 /**
- *
- * @author simonnewham
+ *CSC3003S CAPSTONE
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class CurrentUser {
     

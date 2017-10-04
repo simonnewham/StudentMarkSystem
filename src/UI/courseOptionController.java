@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Contoller responsible for handling events for the courseOption view
+ * Used by convenor only for their course as well as adminstaff for any available course
+ * Each user has options of how to interact with the course
  */
 package UI;
 
@@ -18,10 +18,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
-/**
- * FXML Controller class
+/*
+ * CSC3003S Capstone
  *
- * @author simonnewham
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class courseOptionController implements Initializable {
     
@@ -34,6 +34,7 @@ public class courseOptionController implements Initializable {
     
     @FXML Label title;
     
+    /*Individual marks can be edited for a specific test or assignment*/
     @FXML
     public void handleEdit(ActionEvent event) throws IOException{
        
@@ -42,6 +43,7 @@ public class courseOptionController implements Initializable {
         
      }
     
+    /*Changes the stack pane to view the marks that exist in the database*/
     @FXML
     public void handleviewMarks(ActionEvent event) throws IOException{
        
@@ -50,6 +52,7 @@ public class courseOptionController implements Initializable {
         
      }
     
+    /*Changes the stack pane to view the students that exist in the database*/
     @FXML
     public void handleviewStudents(ActionEvent event) throws IOException{
        
@@ -59,6 +62,7 @@ public class courseOptionController implements Initializable {
      }
    
     
+    /*Changes the stack pane to view the marks that exist in the database*/
      @FXML
     public void handleOverview(ActionEvent event) throws IOException{
        
@@ -67,8 +71,8 @@ public class courseOptionController implements Initializable {
         
      }
     
-    /**
-     * Initializes the controller class.
+    /*
+     * Checks if the view is being accessed by an AdminStaff or convenor and sets the label to the approriate course name
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

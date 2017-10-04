@@ -1,13 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Class used to display the marks in fixed colums in the viewMarksT table
+ * Each row is a MarkLayer1 object that is loaded into the table
  */
 package Courses;
 
 /**
  *
- * @author simonnewham
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class MarkLayer1 {
     
@@ -17,6 +16,9 @@ public class MarkLayer1 {
     String finalM;
     String exam;
     
+    /*
+     * Constructor used to load all the variables 
+    */
     public MarkLayer1(String s, String c, int CM, String FM, String EM){
         
         coursename=c;

@@ -20,9 +20,9 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 
 /**
- * FXML Controller class
+ * FXML New Course Controller class
  *
- * @author simonnewham
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class AS_NewCourseController implements Initializable {
 
@@ -38,17 +38,13 @@ public class AS_NewCourseController implements Initializable {
      @FXML private TextField fileName;
     @FXML private Button addCourse;
     @FXML private MenuButton convenorButton;
-    //@FXML private MenuButton lectureButton;
     
     public String convenorName;
     public static String errmsg="";
     
-     
-    @FXML   
-     public void handleConvenor(ActionEvent event) throws IOException, SQLException{
-       
-     }
-     
+    
+    /*Adds a course to the courses table in the database and sets a new convenor and year to the course. 
+     A current lecturer is turned into a course convenor.*/ 
     @FXML   
      public void handleAddCourse(ActionEvent event) throws IOException, SQLException{
         
@@ -71,9 +67,11 @@ public class AS_NewCourseController implements Initializable {
          courseYear.clear();
          convenorButton.setText("Select");
        //  lectureButton.setText("Select");
-        msg.setText(errmsg);
+         msg.setText(errmsg);
      }
      
+     /*Adds students to a particular course under the participants list.
+     Imports the students in a .csv file */
       @FXML   
      public void handleAddStudents(ActionEvent event) throws IOException, SQLException{
          Users.AdminStaff.importStudents(fileName.getText(), coursecode);
@@ -88,6 +86,8 @@ public class AS_NewCourseController implements Initializable {
          convenorButton.getItems().add(new MenuItem("test2"));
      }
     
+     /*Adds all the current lecturers to the menu drop down tab and uses an action listener to determine which current lecturer
+     is chosen.*/
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {

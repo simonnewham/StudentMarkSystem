@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * TController responsible for handling events in the AdminStaff home framework
  */
 package UI;
 
@@ -26,9 +24,9 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
+ * CSC3003S CapStone
+ * NWHSIM001, GRNCAM007, WLLCOU004
  *
- * @author simonnewham
  */
 public class AdminStaffHomeController implements Initializable {
 
@@ -41,6 +39,7 @@ public class AdminStaffHomeController implements Initializable {
    @FXML Button viewMarks;
    @FXML Label welcome;
    
+   /*Logs out the current user and changes the view back to the log in page*/
    @FXML
    public void handleSignOut(ActionEvent event) throws IOException{
        
@@ -52,6 +51,7 @@ public class AdminStaffHomeController implements Initializable {
        CourseClicked.Clear();
    }
    
+   /*Changes the stack pane to view the courses that exist in the database*/
    @FXML
    public void hanldeviewCourses()throws IOException{
        CourseClicked.Clear();
@@ -60,6 +60,7 @@ public class AdminStaffHomeController implements Initializable {
        
    }
    
+   /*Changes the stack pane to view the students that exist in the database*/
    @FXML
    public void hanldeviewStudents()throws IOException{
        CourseClicked.Clear();
@@ -67,6 +68,8 @@ public class AdminStaffHomeController implements Initializable {
        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewStudents.fxml")));
        
    }
+   
+   /*Allows the admin staff to create a new course*/
    @FXML
    public void hanldeNewCourse()throws IOException{
        CourseClicked.Clear();
@@ -75,6 +78,7 @@ public class AdminStaffHomeController implements Initializable {
        
    }
    
+   /*Changes the stack pane to view the marks that exist in the database*/
    @FXML
    public void hanldeMarks()throws IOException{
        CourseClicked.Clear();
@@ -82,14 +86,12 @@ public class AdminStaffHomeController implements Initializable {
        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarksT.fxml")));
        
    }
-    /**
-     * Initializes the controller class.
+    /*
+     * Initializes the controller class by loading the UCT logo.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-          //load logo
-          
+        
         File file = new File("logo.gif");
         Image image = new Image(file.toURI().toString());
         logo.setImage(image);

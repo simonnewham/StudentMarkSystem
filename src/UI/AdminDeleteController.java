@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 package UI;
 
 import java.net.URL;
@@ -13,20 +10,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
 /**
- * FXML Controller class
+ * Admin Delete Controller class
  *
- * @author simonnewham
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class AdminDeleteController implements Initializable {
     
     @FXML private TextField removeUsername;
     
+    /*Removes a currently existing user from the database*/
     @FXML
     public void handleRemoveUser() throws SQLException{
         Users.Admin.handleRemoveUser(removeUsername.getText());
         removeUsername.clear();
     }
     
+    /*Clears all filled in text fields that arent used*/
     @FXML
     public void handleCancel() throws SQLException{
         removeUsername.clear();
@@ -36,7 +35,7 @@ public class AdminDeleteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
     
 }

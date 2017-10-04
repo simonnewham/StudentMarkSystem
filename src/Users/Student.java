@@ -25,10 +25,12 @@ public class Student extends Person {
         course =c;
     }
 
+    /*Gets the course the student is a participant in*/
     public String getCourse() {
         return course;
     }
     
+    /*Gets the course the student is a registered for*/
     public ArrayList<Course> getCourses(){
         
         return courses_registered;

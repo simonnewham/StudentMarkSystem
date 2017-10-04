@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Controller responsilbe for loading and handling user logins
  */
 package UI;
 
@@ -32,8 +30,8 @@ import java.sql.Statement;
 
 
 /**
- *
- * @author simonnewham
+ * CSC3003S Capstone
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class LoginController implements Initializable {
     
@@ -48,6 +46,11 @@ public class LoginController implements Initializable {
    @FXML
    private ImageView logo;
    
+   /*
+    * Method is responsible for establishing connecting with users_login table
+    * The username and password are compared for a corresponding pair in the database
+    * If there is a match the user is granted access to the correct view corresponding with their role
+   */
    @FXML
    public void handleLogin(ActionEvent event) throws IOException, SQLException{
        
@@ -119,14 +122,16 @@ public class LoginController implements Initializable {
             
             }
             else{
-                error.setText("Error with Login");
-            
+                error.setText("Error with Login");      
             }  
        } 
        myConn.close();
    }
     
     @Override
+    /*
+     * Load the UCT logo when Login is loaded
+    */
     public void initialize(URL url, ResourceBundle rb) {
         //load logo
         File file = new File("logo.gif");

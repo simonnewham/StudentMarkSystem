@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This class is responsible for initating the program.
+ * This is done by loading the login.fxml file when the program is run.
  */
 package UI;
 
@@ -14,19 +13,17 @@ import UI.*;
 
 /**
  *
- * @author simonnewham
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
+
 public class Starter extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
         
-        //DataBase.init_UserDB();
-       
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));        
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        //stage.setTitle("Login");
         stage.show();
     }
 

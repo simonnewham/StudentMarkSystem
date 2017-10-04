@@ -1,3 +1,6 @@
+/*
+*Class is super user and is inherited by the student class 
+*/
 package Users;
 
 public class Person {

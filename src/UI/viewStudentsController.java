@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Controller responsible for displaying students in the viewStudents table
  */
 package UI;
 
@@ -33,9 +31,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 
 /**
- * FXML Controller class
+ * CSC3003S CAPSTONE
  *
- * @author simonnewham
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class viewStudentsController implements Initializable {
     
@@ -50,8 +48,7 @@ public class viewStudentsController implements Initializable {
     public ObservableList<Student> data = FXCollections.observableArrayList(
             
         );
-    
-    
+   
     @FXML Button searchSN;
     @FXML Button searchCC;
     @FXML TextField SN;
@@ -60,6 +57,11 @@ public class viewStudentsController implements Initializable {
     @FXML Button export;
     @FXML Label msg;
     
+    /*
+    * Method invoked when a user searches for a particular student number 
+    * A student object is created from a result set for that student
+    * The results are then displayed 
+    */
     @FXML
     public void getStudent() throws FileNotFoundException, IOException, SQLException{
 
@@ -94,7 +96,9 @@ public class viewStudentsController implements Initializable {
         }
        
     }
-    
+    /*
+    *Method loads all students within the searched course and displays the content 
+    */
     @FXML
     public void getCourse() throws FileNotFoundException, IOException, SQLException{
         
@@ -129,6 +133,9 @@ public class viewStudentsController implements Initializable {
         }
    
     }
+    /*
+    * Loads all students which are enrolled in a course
+    */
     @FXML
      private void getStudents() throws FileNotFoundException, IOException, SQLException{
         
@@ -153,7 +160,10 @@ public class viewStudentsController implements Initializable {
         table.setItems(data);
         myConn.close();
     } 
-     
+     /*
+     *Handles the exporting of the displayed student table 
+     *Each student obejct is written row by row to the .csv file
+     */
     @FXML 
     public void handleExport() throws Exception{
         
@@ -179,13 +189,14 @@ public class viewStudentsController implements Initializable {
             finally {
 
                 writer.flush();
-                 writer.close();
+                writer.close();
             }   
             
     } 
     
-    /**
-     * Initializes the controller class.
+    /*
+     * Sets up the fixed colums for the table
+     * Determines how the view has been accessed. If through the courseOption view only students from that specific view are shown
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Contoller class responsilbe for handling the correct loading for the second detailed layer of student marks
+ * October 2017
  */
 package UI;
 
@@ -41,7 +40,7 @@ import javafx.util.Callback;
 /**
  * FXML Controller class
  *
- * @author simonnewham
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class viewMarksController implements Initializable {
     
@@ -61,14 +60,18 @@ public class viewMarksController implements Initializable {
     public ObservableList<ObservableList> data = FXCollections.observableArrayList(
             
      );
-    
+    /*
+    Method determines if back button was pressed and is used by ViewmarksT to load previous search
+    */
     @FXML public void goBack() throws FileNotFoundException, IOException, SQLException{
         
         StudentMarkClick.setBack(true);
         content.getChildren().clear();
         content.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarksT.fxml")));   
     }
-    
+    /*
+    * Method is used to search for a particular student number but is not made use of
+    */
     @FXML
     public void getStudent() throws FileNotFoundException, IOException, SQLException{
         
@@ -88,12 +91,7 @@ public class viewMarksController implements Initializable {
                 courses.add(rs.getString("courses"));
                 
             }
-            for(int i=0;i<courses.size(); i++){
-                 String table1 = courses.get(i).toLowerCase()+"_marks";
-                 ResultSet rs1 = myStatement.executeQuery("SELECT * FROM users."+table1+" WHERE studentname='"+search.toUpperCase()+"'");
-            
-                    this.getData_and_Set(rs1);
-            }
+           
              myConn.close();
             }
         else{
@@ -101,7 +99,12 @@ public class viewMarksController implements Initializable {
         }
         SN.clear();
      }
-    
+    /*
+    * Method used to load all the marks for the given course code searched for
+    * users enter course code into CC textfield and press search
+    *The method will find the table for that course and load the detailed mark.
+    *Only accessed via courseOptions
+    */
     @FXML
     public void getCourse() throws FileNotFoundException, IOException, SQLException{
         data.clear();
@@ -126,13 +129,15 @@ public class viewMarksController implements Initializable {
         }
          CC.clear();
      }
-    
+    /*
+    * Method takes in a result set and then creates column names for the table based on the result set
+    * the info is then read and added to data list row by row
+    *Finnaly the data is loaded into the table and displayed
+    */
     @FXML 
     public void getData_and_Set(ResultSet RS) throws FileNotFoundException, IOException, SQLException{
         
-        //data.clear();
         ResultSet rs = RS;
-        //table.getColumns().clear();
         
         //add columns
          for(int i=0 ; i<rs.getMetaData().getColumnCount(); i++){
@@ -163,12 +168,15 @@ public class viewMarksController implements Initializable {
                 data.add(row);
 
             }
-
             //FINALLY ADDED TO TableView
             table.setItems(data);
         
     }
    
+    /*
+    * Method is used to load only details marks for a particular student in a particular course
+    * It accesses the correct course database and creates a result set for that student
+    */
     @FXML
     public void getDetails() throws FileNotFoundException, IOException, SQLException{
         
@@ -183,6 +191,11 @@ public class viewMarksController implements Initializable {
         myConn.close();
     }
     
+    /*
+    * Method handles exporting the displayed table to a .csv file named by the user
+    * This is done by calling the getContent method to read the displayed content
+    * Then each row is written to the CSV with a message displayed if the write was successful
+    */
     @FXML
     public void handleExport() throws Exception{
         
@@ -219,6 +232,9 @@ public class viewMarksController implements Initializable {
             }
    
     }
+    /*
+    *Method reads all the displayed content in the table requested by the user and returns the content
+    */
     private ArrayList<ArrayList<String>> getContent(){
         
         ArrayList<ArrayList<String>> values = new ArrayList<ArrayList<String>>();
@@ -243,7 +259,10 @@ public class viewMarksController implements Initializable {
          }
         return values;
     }
-    
+    /*
+    *Method invoked when a user clicks a row
+    *Only used for testing purposes 
+    */
     @FXML 
     public void handleSelected() throws Exception{
         
@@ -254,18 +273,18 @@ public class viewMarksController implements Initializable {
         System.out.println(selected);   
         
     }
-    /**
-     * Initializes the controller class.
+    /*
+     * Method determines how the the table was accessed and by who
+     * The corresponding actions are then taken to the dispaly only the correct information for that user
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Only show back button if activated via viewMarksT
-        
-         String user = CurrentUser.getUserName();
+      
+        String user = CurrentUser.getUserName();
         String role = CurrentUser.getUserRole();
         
         System.out.println(role);
-        
+         // Only show back button if activated via viewMarksT
         if(!StudentMarkClick.isClicked()){
             back.setVisible(false);
         }
@@ -279,9 +298,7 @@ public class viewMarksController implements Initializable {
             CC.setVisible(false);
             searchSN.setVisible(false);
             searchCC.setVisible(false);
-            
-            //StudentMarkClick.clearClicked();
-            //deactivate but store search to go back
+
             StudentMarkClick.setClicked(false);
             try{
                 this.getDetails();
@@ -289,19 +306,6 @@ public class viewMarksController implements Initializable {
             catch (IOException | SQLException e) {
                 
             }
-//            SN.setText(user);
-//            SN.setVisible(false);
-//            CC.setVisible(false);
-//            CC.setVisible(false);
-//            searchSN.setVisible(false);
-//            searchCC.setVisible(false);
-//
-//            try{
-//                this.getStudent();
-//            }
-//            catch (IOException | SQLException e) {
-//                
-//            }
 
         }
         //Only show detail for particular student only coming from viewMarkT table
@@ -313,8 +317,7 @@ public class viewMarksController implements Initializable {
             CC.setVisible(false);
             searchSN.setVisible(false);
             searchCC.setVisible(false);
-            
-            //StudentMarkClick.clearClicked();
+          
             //deactivate but store search to go back
             StudentMarkClick.setClicked(false);
             try{

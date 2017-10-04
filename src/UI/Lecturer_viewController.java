@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Controller responsible for loading and handling events in the lecture view framework
  */
 package UI;
 
@@ -25,10 +23,11 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
+ *CSC3003S CAPSTONE
  *
- * @author simonnewham
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
+
 public class Lecturer_viewController implements Initializable {
 
    @FXML private Button signout;
@@ -44,7 +43,7 @@ public class Lecturer_viewController implements Initializable {
    @FXML private StackPane content;
    
       
-   
+   /*signs the user out and changes the view to the log in page*/
    @FXML
    public void handleSignOut(ActionEvent event) throws IOException{
        
@@ -55,6 +54,7 @@ public class Lecturer_viewController implements Initializable {
        app_stage.show();  
    }
    
+   /*Allows the lecturer to view all the marks that are on the system*/
    @FXML
    public void handleViewMarks(ActionEvent event) throws IOException{
        
@@ -63,6 +63,7 @@ public class Lecturer_viewController implements Initializable {
 
    }
    
+   /*Allows the lecturer to get information from the current course the lecturer is lecturing in*/
    @FXML
    public void handleCurrentCourse(ActionEvent event) throws IOException{
        
@@ -71,6 +72,7 @@ public class Lecturer_viewController implements Initializable {
        
    }
    
+   /*Allows the lecturer to view all the students in the system*/
    @FXML
    public void handleViewStudents(ActionEvent event) throws IOException{
        
@@ -78,8 +80,8 @@ public class Lecturer_viewController implements Initializable {
         content.getChildren().add(FXMLLoader.load(getClass().getResource("viewStudents.fxml")));
        
    }
-    /**
-     * Initializes the controller class.
+    /*
+     * Welcomes the lecturer and loads the UCT logo
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

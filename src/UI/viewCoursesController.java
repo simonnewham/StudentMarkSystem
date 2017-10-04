@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Controller responsible for laoding all the availabe courses found within the database
+ * October 2017
  */
 package UI;
 
@@ -30,15 +29,16 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 
 /**
- * FXML Controller class
+ * CSC3003S CAPSTONE
  *
- * @author simonnewham
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class viewCoursesController implements Initializable {
     
     @FXML TableView table;
     @FXML StackPane content;
     
+    //List stores the rows that will be displayed
     public ObservableList<ObservableList> data = FXCollections.observableArrayList(
             
      );
@@ -46,6 +46,10 @@ public class viewCoursesController implements Initializable {
     String user;
     String role;
     
+    /*
+     * Method access the database and creates the columns for the table based on column names in the database
+     * Data is then loaded row by row and the tableItems are displayed to the user
+    */
     @FXML
     public void getCourses() throws FileNotFoundException, IOException, SQLException{
         
@@ -55,7 +59,7 @@ public class viewCoursesController implements Initializable {
         
         //add columns
          for(int i=0 ; i<rs.getMetaData().getColumnCount(); i++){
-             //We are using non property style for making dynamic table
+            
             final int j = i;  
          
              TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
@@ -66,7 +70,6 @@ public class viewCoursesController implements Initializable {
                  }                   
              });
              table.getColumns().addAll(col);
-
          }
          
          while(rs.next()){
@@ -80,13 +83,14 @@ public class viewCoursesController implements Initializable {
                 
                 System.out.println("Row [1] added "+row );
                 data.add(row);
-
         }
-
         table.setItems(data);
         myConn.close();
     }
-    
+    /*
+     * Method only accessable by adminStaff
+     * Allows admin staff to click on a row and edit the selected course via the CourseOption view.
+    */
     @FXML 
     public void handleSelected() throws Exception{
         
@@ -103,25 +107,21 @@ public class viewCoursesController implements Initializable {
             content.getChildren().add(FXMLLoader.load(getClass().getResource("courseOption.fxml")));
         }
     }
+    /*
+     * Keeps track of current user and intiates the method to get all available courses
+    */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         user = CurrentUser.getUserName();
         role = CurrentUser.getUserRole();
-        
-//        if(role.equals("S")){
-//            this.getForStudent(user);
-//        }
-        
-       // else{
-            
+
             try{
                 this.getCourses();
             }
             catch (IOException | SQLException e) {
   
             }
-        //}
         
     }      
     

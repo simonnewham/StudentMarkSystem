@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Controller responsible for loading the correct marks overview when a user requests to view marks
  */
 package UI;
 
@@ -37,9 +35,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
 
 /**
- * FXML Controller class
+ * CSC3003S Capstone
  *
- * @author simonnewham
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class viewMarksTController implements Initializable {
     
@@ -67,7 +65,10 @@ public class viewMarksTController implements Initializable {
      public ObservableList<MarkLayer1> data = FXCollections.observableArrayList(
             
      );
-   
+     
+     /*
+     * Method used to get all information for a specific course code and then display the correct information
+     */
      @FXML
     public void getCourse() throws FileNotFoundException, IOException, SQLException{
         
@@ -94,7 +95,10 @@ public class viewMarksTController implements Initializable {
         }
          CC.clear();
      }
-    
+    /*
+     * Method displays an overview of all the marks for the courses a student is registered for
+     *This is done by searching for their marks in each course they appear in and generating a result set to be displayed
+    */
     @FXML
     public void getStudent() throws FileNotFoundException, IOException, SQLException{
         
@@ -115,7 +119,7 @@ public class viewMarksTController implements Initializable {
                 
             }
             System.out.println(courses.toArray().toString());
-            //myConn.close();
+            
    
             for(int i=0;i<courses.size(); i++){
                
@@ -123,21 +127,22 @@ public class viewMarksTController implements Initializable {
                  ResultSet rs1 = myStatement.executeQuery("SELECT * FROM users."+table1+" WHERE studentname='"+search.toUpperCase()+"'");
                  String currentcourse =courses.get(i);
                  this.getData_and_Set(rs1, currentcourse);
-                 //myConn.close();
                  
            }
+            //TRACING
             //System.out.println(data.get(1));
            
             myConn.close();
             
             }
-        else{
-            //this.getMarks();
-        }
         SN.clear();
      }
     
-    
+    /*
+    * Method used to read content from a result set and display it in the correct tables
+    * Method also calculates the class mark dynamically and final mark if an exam has been added
+    * Finnaly a MarkLayer1 object is created and then displayed in each row
+    */
      @FXML 
     public void getData_and_Set(ResultSet RS, String c) throws FileNotFoundException, IOException, SQLException{
         
@@ -226,7 +231,10 @@ public class viewMarksTController implements Initializable {
             table.setItems(data);
    
     }
-    
+    /*
+    * Method hands when a row is selected to display a detailed view for that row
+    * Data from the row is gathered and corresponding viewMarks table is intiated
+    */
      @FXML 
     public void handleSelected() throws Exception{
         
@@ -245,6 +253,11 @@ public class viewMarksTController implements Initializable {
         System.out.println(sn+"|"+cc);   
         
     }
+    
+    /*
+    *Method responsible for export the current table to a .csv file named by the user
+    *This is done by writing each MarkLayer1 object to the file
+    */
     @FXML
     public void handleExport() throws Exception{
         
@@ -275,8 +288,9 @@ public class viewMarksTController implements Initializable {
    
     }
     
-    /**
-     * Initializes the controller class.
+    /*
+     * Used to set up the fixed columns for the table
+     * Determines how and which user is accessing the table and loads the correct information
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

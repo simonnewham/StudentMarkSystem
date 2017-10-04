@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Class responsible for all actions taken by the admin
  */
 package Users;
 
@@ -15,14 +13,17 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 /**
- *
- * @author Campbell
+ *CSC3003S CAPSTONE
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class Admin extends User{
     
     public Admin(String u,String f, String l,  String e, String p, String r) {
         super(u, f, l, e, p, r);
     }
+    
+    /*Adds a new User to the database with the given details of the user.
+    Gives an error message if the user already exists in the database*/
     public static void handleAddUser(String firstname, String surname, String username, String password, String role) throws SQLException{
         Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
         Statement myStatement = myConn.createStatement();
@@ -37,6 +38,8 @@ public class Admin extends User{
         myConn.close();
     }
     
+    /*Removes a user that exists in the databse.
+    Gives an error if the user is not found and therefore cannot be removed*/
     public static void handleRemoveUser(String username) throws SQLException{
         Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
         Statement myStatement = myConn.createStatement();
@@ -52,6 +55,7 @@ public class Admin extends User{
         myConn.close();
     }
     
+    /*Reads through a .csv file and adds all the users in the file with their details into the databse*/
     public static void handleImportUser(String fileName) throws SQLException, FileNotFoundException{
         Scanner s = new Scanner(new File(fileName));
         while (s.hasNext()){

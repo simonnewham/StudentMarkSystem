@@ -7,7 +7,8 @@ package Courses;
 
 /**
  *
- * @author simonnewham
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
+ * Class used to temporarily store lectures with setters and getters
  */
 public class Course {
     

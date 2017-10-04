@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Class responsible for handling all actions taken by a course convenor 
  */
 package Users;
 
@@ -20,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 /**
  *
- * @author simonnewham
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class Convenor extends User{
     public String convenorSubject;
@@ -32,6 +30,8 @@ public class Convenor extends User{
        
     }
     
+    /*Reads through a .csv file of a list of usernames and a specific test or assessment mark. 
+    The mark is added for each student for the correct course.*/
     public static void importMarks(String course, String fileName, String assessName) throws FileNotFoundException, IOException, SQLException{
         
         String currentcourse = course;
@@ -58,6 +58,8 @@ public class Convenor extends User{
         
     }
     
+    /*Edits and changes a specific marks of an individual student using the students username, the name of the test or 
+    assessment and the new mark*/
     public static void editMarks(String course,String studentName, String markInfo, String newMark) throws SQLException{
         String currentcourse = course;
         String currentcourselower = currentcourse.toLowerCase();

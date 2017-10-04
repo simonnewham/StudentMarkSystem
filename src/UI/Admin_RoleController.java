@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Controller responsible for handing all events for the AdminAdd and Admin Delete views
  */
 package UI;
 
@@ -17,9 +15,9 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 
 /**
- * FXML Controller class
+ * CSC3003S CAPSTONE
  *
- * @author simonnewham
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class Admin_RoleController implements Initializable {
 
@@ -35,6 +33,8 @@ public class Admin_RoleController implements Initializable {
     @FXML  Label msg;
     public static String errmsg="";
     
+    /*Allows a new user to be added to the system.
+    User is given a first name, surname, username, password and a role.*/
     @FXML
     public void handleAddUser() throws SQLException{
         errmsg="Import successfull";
@@ -52,13 +52,14 @@ public class Admin_RoleController implements Initializable {
         msg.setText(errmsg);
     }
     
-    
+    /*Allows a user to be removed from the system*/
     @FXML
     public void handleRemoveUser() throws SQLException{
         Users.Admin.handleRemoveUser(removeUsername.getText());
         removeUsername.clear();
     }
     
+    /*Imports a list of users and their information from a .csv file*/
     @FXML
     public void handleimportUser() throws SQLException, FileNotFoundException{
         errmsg="Import successfull";
@@ -68,11 +69,14 @@ public class Admin_RoleController implements Initializable {
         
     }
     
+    /*Clears all the filled in text fields that arent used*/
     @FXML
     public void handleCancel() throws SQLException{
         removeUsername.clear();
     }
     
+    /*Sets up and adds the different possible roles a user can be into the drop down menu.
+    Uses an action listener to determine which is clicked.*/
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         roleButton.setText("Role");
@@ -118,6 +122,7 @@ public class Admin_RoleController implements Initializable {
     @FXML public static void Error(){
         
        errmsg ="Error Occured! Some users may already be in DB";
+       
     }
     
 }

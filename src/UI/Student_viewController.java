@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Controller responsible for handling all events for the student_view framework
  */
 package UI;
 
@@ -27,10 +25,11 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author simonnewham
+ * @author NWHSIM001, GRNCAM007, WLLCOU004
  */
 public class Student_viewController implements Initializable {
     
+    /*Pane will be swapped out depending on action taken*/
     @FXML private StackPane content;
 
     @FXML private Button viewMarks;
@@ -39,7 +38,7 @@ public class Student_viewController implements Initializable {
     @FXML Label welcome;
     @FXML ImageView logo;
    
-     
+    /*Signs the student out and changes the view to the log in page*/ 
     @FXML   
      public void handleSignOut(ActionEvent event) throws IOException{
         
@@ -50,7 +49,8 @@ public class Student_viewController implements Initializable {
          app_stage.show();
     
     }
-     
+    
+     /*Allows the student to view marks*/
      @FXML   
      public void handleViewMarks(ActionEvent event) throws IOException{
         
@@ -59,11 +59,9 @@ public class Student_viewController implements Initializable {
         
     
     }
-     
-    
-    
-    /**
-     * Initializes the controller class.
+ 
+    /*
+     * Initializes the controller class by welcoming user and loading the UCT logo.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
