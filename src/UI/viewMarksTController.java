@@ -82,10 +82,15 @@ public class viewMarksTController implements Initializable {
             data.clear();
             Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96"); 
             Statement myStatement = myConn.createStatement();
-            ResultSet rs = myStatement.executeQuery("SELECT * FROM users."+table1.toString());
-            String currentcourse= course;                             
-            
-            this.getData_and_Set(rs,currentcourse);
+            try{
+                 ResultSet rs = myStatement.executeQuery("SELECT * FROM users."+table1.toString());
+                 String currentcourse= course;                             
+                 this.getData_and_Set(rs,currentcourse);
+            }
+            catch(SQLException e){
+                System.out.println("No such course");
+            }
+           
             myConn.close();
              
             
