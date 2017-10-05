@@ -347,6 +347,7 @@ public class viewMarksTController implements Initializable {
 
             }
             
+            
         }
         //CC
         else if (UI.EditCourseController.course !=null){

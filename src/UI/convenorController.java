@@ -50,7 +50,8 @@ public class convenorController implements Initializable {
     /*Signs the convenor out and changes the view back to the log in page*/
      @FXML   
      public void handleSignOut(ActionEvent event) throws IOException{
-        UI.EditCourseController.course =null;
+         UI.EditCourseController.course=null;
+         UI.EditCourseController.course =null;
          Parent home_parent = FXMLLoader.load(getClass().getResource("Login.fxml"));
          Scene home_scene = new Scene(home_parent);
          Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //current stage
@@ -62,6 +63,7 @@ public class convenorController implements Initializable {
      /*Allows the conenor to import marks, edit them, and view marks and students from the course that the convenor is convening*/
     @FXML   
      public void handleCourse(ActionEvent event) throws IOException, SQLException{
+        
         UI.EditCourseController.course =null; 
         Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "simnew96");
         Statement myStatement = myConn.createStatement();

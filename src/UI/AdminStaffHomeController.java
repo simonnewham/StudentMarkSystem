@@ -42,7 +42,8 @@ public class AdminStaffHomeController implements Initializable {
    /*Logs out the current user and changes the view back to the log in page*/
    @FXML
    public void handleSignOut(ActionEvent event) throws IOException{
-       
+       Courses.CourseClicked.Clear();
+       UI.EditCourseController.course=null;
        Parent home_parent = FXMLLoader.load(getClass().getResource("Login.fxml"));
        Scene home_scene = new Scene(home_parent);
        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //current stage
@@ -54,6 +55,7 @@ public class AdminStaffHomeController implements Initializable {
    /*Changes the stack pane to view the courses that exist in the database*/
    @FXML
    public void hanldeviewCourses()throws IOException{
+       UI.EditCourseController.course=null;
        CourseClicked.Clear();
        content.getChildren().clear();
        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewCourses.fxml")));
@@ -63,6 +65,7 @@ public class AdminStaffHomeController implements Initializable {
    /*Changes the stack pane to view the students that exist in the database*/
    @FXML
    public void hanldeviewStudents()throws IOException{
+       UI.EditCourseController.course=null;
        CourseClicked.Clear();
        content.getChildren().clear();
        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewStudents.fxml")));
@@ -72,6 +75,7 @@ public class AdminStaffHomeController implements Initializable {
    /*Allows the admin staff to create a new course*/
    @FXML
    public void hanldeNewCourse()throws IOException{
+       UI.EditCourseController.course=null;
        CourseClicked.Clear();
        content.getChildren().clear();
        content.getChildren().add(FXMLLoader.load(getClass().getResource("AS_NewCourse.fxml")));
@@ -81,6 +85,7 @@ public class AdminStaffHomeController implements Initializable {
    /*Changes the stack pane to view the marks that exist in the database*/
    @FXML
    public void hanldeMarks()throws IOException{
+       UI.EditCourseController.course=null;
        CourseClicked.Clear();
        content.getChildren().clear();
        content.getChildren().add(FXMLLoader.load(getClass().getResource("viewMarksT.fxml")));

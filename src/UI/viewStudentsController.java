@@ -209,7 +209,7 @@ public class viewStudentsController implements Initializable {
         //email.setCellValueFactory(new PropertyValueFactory <Student, String>("email"));
         
         //Accessed by AS
-        if(CourseClicked.getClicked()){ //AS staff only
+        if(CourseClicked.getClicked()==true){ //AS staff only
             
             CC.setText(CourseClicked.getCourse());
             try{
@@ -222,11 +222,11 @@ public class viewStudentsController implements Initializable {
             CC.setVisible(false);
             searchSN.setVisible(false);
             searchCC.setVisible(false);
-            
+           
         }
         //accessed by CC
         else if(UI.EditCourseController.course !=null){
-            
+            //System.out.println("CLICKED");
              CC.setText(UI.EditCourseController.course);
             try{
                 this.getCourse();

@@ -21,7 +21,7 @@
     <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="345.0" vgrow="ALWAYS" />
   </rowConstraints>
    <children>
-      <StackPane fx:id="content" prefHeight="347.0" prefWidth="486.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <StackPane fx:id="content" alignment="TOP_CENTER" prefHeight="347.0" prefWidth="486.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
             <ImageView fx:id="logo" fitHeight="260.0" fitWidth="260.0" pickOnBounds="true" preserveRatio="true" />
          </children></StackPane>
